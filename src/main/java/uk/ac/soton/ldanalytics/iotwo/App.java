@@ -5,16 +5,17 @@ import static spark.Spark.post;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.MultipartConfigElement;
-import javax.servlet.http.Part;
 
 import org.eclipse.jetty.server.Request;
 
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
+
+import com.google.gson.Gson;
+
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.template.Configuration;
 
@@ -26,9 +27,7 @@ public class App {
 		freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
 		Spark.staticFileLocation("/public");
 		
-        get("/", (req, res) -> {
-        	System.out.println(System.getProperty("java.io.tmpdir"));
-        	
+        get("/", (req, res) -> {        	
         	Map<String, Object> attributes = new HashMap<>();
         	return freeMarkerEngine.render(new ModelAndView(attributes, "index.ftl"));
         });
@@ -38,17 +37,12 @@ public class App {
 	       	return freeMarkerEngine.render(new ModelAndView(attributes, "replay.ftl"));
         });
         
-        post("/sensors/replay/upload", (req, res) -> {
-        	MultipartConfigElement multipartConfigElement = new MultipartConfigElement("tmp");
+        post("/sensors/replay/upload", "application/json", (req, res) -> {
+        	MultipartConfigElement multipartConfigElement = new MultipartConfigElement(System.getProperty("java.io.tmpdir"));
         	req.raw().setAttribute(Request.__MULTIPART_CONFIG_ELEMENT, multipartConfigElement);
-        	
-        	String fileId = UUID.randomUUID().toString();
-            Part file = req.raw().getPart("file"); //file is name of the upload form
-            file.write(fileId + ".csv");
-            System.out.println(file.getSubmittedFileName());
-            System.out.println(file.getSize());
-            //return new id, process csv
-            return fileId;
+        	Gson gson = new Gson(); 
+            Upload upload = new Upload(req.raw().getPart("file"));
+            return gson.toJson(upload);
         });
         
         

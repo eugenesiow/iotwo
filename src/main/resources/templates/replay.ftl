@@ -335,20 +335,48 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12 toolbar">
-                    <button type="button" class="btn btn-default btn">
-					  <span class="glyphicon glyphicon-file" aria-hidden="true"></span> New
-					</button>
+				    <div class="btn-group" data-toggle="buttons-checkbox">
+        				<a class="btn btn btn-default" id="new-replay-btn" data-toggle="collapse" href="#new-replay">
+							<span class="glyphicon glyphicon-file" aria-hidden="true"></span> New
+						</a>
+    				</div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row collapse toolbar" id="new-replay">
+                <div class="panel panel-default">
+                	<div class="panel-heading">Add new replay</div>
+                	<div class="panel-body" id="new-replay-body">
+                    	<form action="/sensors/replay/upload" class="dropzone toolbar" id="dataUploadDropzone"></form>
+                    </div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
-                    <form action="/sensors/replay/upload" class="dropzone"></form>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
+	            <div class="table-responsive">
+		            <table class="table table-striped table-bordered table-hover">
+		                <thead>
+		                    <tr>
+		                        <th class="col-md-1">#</th>
+		                        <th>URI</th>
+		                        <th>Name</th>
+		                        <th>Source</th>
+		                        <th class="col-md-1">Model</th>
+		                        <th class="col-md-1">Mapping</th>
+		                        <th class="col-md-1">Rate</th>
+		                        <th class="col-md-1">Action</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                    
+		                </tbody>
+		            </table>
+		        </div>
+		        <!-- /.table-responsive -->
+	        </div>
+	        <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
 
@@ -369,6 +397,74 @@
     
     <!-- Custom Theme JavaScript -->
     <script src="/js/sb-admin-2.js"></script>
+    
+    <script>
+    	Dropzone.options.dataUploadDropzone = {
+    		dictDefaultMessage: "Drop CSV files here or click to upload",
+    		acceptedFiles: ".csv",
+    		init: function() {
+ 		    	this.on("success", function(file,msg) { 
+ 		    		var myDropZone = this;
+					$('#dataUploadDropzone').delay(1000).hide(0, function() {
+						myDropZone.removeFile(file);
+						var dataObj = JSON.parse(msg);
+						$('#new-replay-body').append(createForm(dataObj));
+					});
+					
+ 		    	});
+ 		  	}
+   		};
+    	
+    	function createForm(dataObj) {
+    		var row = $('<div>',{class:'panel-body new-replay-form'});
+    		
+    		//create header
+    		var header = $('<form>',{class:'form-horizontal'});
+    		var grp = $('<div>',{class:'form-group'});
+    		var uriInputGrp = $('<div>',{class:'col-xs-5'});
+    		uriInputGrp.append('<label>URI:</label>');
+    		uriInputGrp.append('<input type="text" class="form-control new-input-uri" value="'+dataObj.uri+'">');
+    		grp.append(uriInputGrp);
+    		var nameInputGrp = $('<div>',{class:'col-xs-2'});
+    		nameInputGrp.append('<label>Name:</label>');
+    		nameInputGrp.append('<input type="text" class="form-control new-input-name" value="'+dataObj.tableName+'">');
+    		grp.append(nameInputGrp);
+    		var rateInputGrp = $('<div>',{class:'col-xs-2'});
+    		rateInputGrp.append('<label>Rate (/s):</label>');
+    		rateInputGrp.append('<input type="text" class="form-control new-input-name" value="1">');
+    		grp.append(rateInputGrp);
+    		header.append(grp);
+    		row.append(header);
+    		
+    		//create col editor
+    		var coledit = $('<form>',{class:'form-horizontal'});
+    		coledit.append('<div class="form-group"><div class="col-xs-2"><label>Columns:</label></div></div>');
+    		var cols = dataObj.sample;
+    		for(var key in cols) {
+    			var keyGrp = $('<div>',{class:'form-group'});
+    			keyGrp.append('<div class="col-xs-2"><input class="form-control" value="'+cols[key].name+'"></div>');
+    			keyGrp.append('<div class="col-xs-2"><input class="form-control" value="'+cols[key].type+'"></div>');
+    			keyGrp.append('<label>E.g. '+cols[key].eg+'</label>');
+    			coledit.append(keyGrp);
+    		}
+    		
+    		var addBtn = $('<button>',{class:'btn btn-primary',text:'Add'});
+    		addBtn.on('click',function(e) {
+    			e.preventDefault();
+    			row.remove();
+    			if($('.new-replay-form').length==0) {
+    				$('#dataUploadDropzone').show();
+    				$('#new-replay-btn').click();
+    			}
+    		});
+    		
+    		coledit.append(addBtn);
+    		
+    		row.append(coledit);
+    		
+    		return row;
+    	}
+    </script>
 
 </body>
 

@@ -19,4 +19,16 @@ public class Model {
             return replays;
         }
     }
+	
+	public String createReplay(Replay model) {
+		// Give the parameters the same names as the corresponding properties in your model class
+		String sql = 
+			"insert into REPLAY(replay_uuid, uri, name, source, model, rate, publishing_date) "+
+			"values (:replay_uuid, :uri, :name, :source, :model, :rate, :publishing_date)";
+
+		try (Connection conn = sql2o.open()) {
+		    conn.createQuery(sql).bind(model).executeUpdate();
+		}
+		return "success";
+	}
 }

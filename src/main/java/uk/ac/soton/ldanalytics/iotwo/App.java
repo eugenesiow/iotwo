@@ -4,7 +4,6 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -20,6 +19,7 @@ import spark.ModelAndView;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
 import uk.ac.soton.ldanalytics.iotwo.model.Model;
+import uk.ac.soton.ldanalytics.iotwo.model.Replay;
 
 import com.google.gson.Gson;
 
@@ -75,6 +75,14 @@ public class App {
         
         get("api/sensors/replay", "application/json", (req, res) -> {        	
         	return gson.toJson(model.getAllReplays());
+        });
+        
+        post("api/sensors/replay", "application/json", (req, res) -> {    
+        	Replay replay = gson.fromJson(req.body(), Replay.class);
+        	replay.generateUUID();
+        	replay.generateDate();
+//        	return gson.toJson(replay);
+        	return model.createReplay(replay);
         });
     }
 }

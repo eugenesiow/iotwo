@@ -163,7 +163,7 @@
     		grp.append(nameInputGrp);
     		var rateInputGrp = $('<div>',{class:'col-xs-2'});
     		rateInputGrp.append('<label>Rate (/s):</label>');
-    		rateInputGrp.append('<input type="text" class="form-control new-input-name" value="1">');
+    		rateInputGrp.append('<input type="text" class="form-control new-input-rate" value="1">');
     		grp.append(rateInputGrp);
     		header.append(grp);
     		row.append(header);
@@ -173,9 +173,9 @@
     		coledit.append('<div class="form-group"><div class="col-xs-2"><label>Columns:</label></div></div>');
     		var cols = dataObj.sample;
     		for(var key in cols) {
-    			var keyGrp = $('<div>',{class:'form-group'});
-    			keyGrp.append('<div class="col-xs-2"><input class="form-control" value="'+cols[key].name+'"></div>');
-    			keyGrp.append('<div class="col-xs-2"><input class="form-control" value="'+cols[key].type+'"></div>');
+    			var keyGrp = $('<div>',{class:'form-group new-model-col'});
+    			keyGrp.append('<div class="col-xs-2"><input class="form-control new-model-col-name" value="'+cols[key].name+'"></div>');
+    			keyGrp.append('<div class="col-xs-2"><input class="form-control new-model-col-type" value="'+cols[key].type+'"></div>');
     			keyGrp.append('<label>E.g. '+cols[key].eg+'</label>');
     			coledit.append(keyGrp);
     		}
@@ -183,6 +183,24 @@
     		var addBtn = $('<button>',{class:'btn btn-primary',text:'Add'});
     		addBtn.on('click',function(e) {
     			e.preventDefault();
+    			
+    			var dataReplay = {};
+    			dataReplay.uri = uriInputGrp.find('.new-input-uri').val();
+    			dataReplay.name = nameInputGrp.find('.new-input-name').val();
+    			dataReplay.rate = rateInputGrp.find('.new-input-rate').val();
+    			dataReplay.source = dataObj.actualPath;
+    			var model = [];
+    			coledit.find('.new-model-col').each(function() {
+    				var modelCol = {};
+    				modelCol.name = $(this).find('.new-model-col-name').val();
+    				modelCol.type = $(this).find('.new-model-col-type').val();
+    				model.push(modelCol);
+    			});
+    			dataReplay.model = JSON.stringify(model);
+    			$.post('/api/sensors/replay',JSON.stringify(dataReplay), function(data) {
+    				console.log(data);
+    			},"text");
+    			
     			row.remove();
     			if($('.new-replay-form').length==0) {
     				$('#dataUploadDropzone').show();

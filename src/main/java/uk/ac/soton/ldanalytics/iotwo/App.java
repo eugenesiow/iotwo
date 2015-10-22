@@ -3,16 +3,23 @@ package uk.ac.soton.ldanalytics.iotwo;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.MultipartConfigElement;
 
 import org.eclipse.jetty.server.Request;
+import org.sql2o.Sql2o;
 
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
+import uk.ac.soton.ldanalytics.iotwo.model.Model;
 
 import com.google.gson.Gson;
 
@@ -26,6 +33,28 @@ public class App {
 		freeMarkerConfiguration.setTemplateLoader(new ClassTemplateLoader(App.class, "/templates"));
 		freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
 		Spark.staticFileLocation("/public");
+		Properties prop = new Properties();
+		InputStream input = null;
+		
+		try {
+			input = new FileInputStream("config.properties");
+			// load a properties file
+			prop.load(input);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		Sql2o sql2o = new Sql2o(prop.getProperty("jdbcUrl"), prop.getProperty("dbUser"), prop.getProperty("dbPass"));
+		Model model = new Model(sql2o);
+		Gson gson = new Gson(); 
 		
         get("/", (req, res) -> {        	
         	Map<String, Object> attributes = new HashMap<>();
@@ -40,11 +69,12 @@ public class App {
         post("/sensors/replay/upload", "application/json", (req, res) -> {
         	MultipartConfigElement multipartConfigElement = new MultipartConfigElement(System.getProperty("java.io.tmpdir"));
         	req.raw().setAttribute(Request.__MULTIPART_CONFIG_ELEMENT, multipartConfigElement);
-        	Gson gson = new Gson(); 
             Upload upload = new Upload(req.raw().getPart("file"));
             return gson.toJson(upload);
         });
         
-        
+        get("api/sensors/replay", "application/json", (req, res) -> {        	
+        	return gson.toJson(model.getAllReplays());
+        });
     }
 }

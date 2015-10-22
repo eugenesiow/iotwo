@@ -101,7 +101,7 @@
 		                        <th class="col-md-1">Action</th>
 		                    </tr>
 		                </thead>
-		                <tbody>
+		                <tbody id="replay-rows">
 		                    
 		                </tbody>
 		            </table>
@@ -131,6 +131,10 @@
     <script src="/js/sb-admin-2.js"></script>
     
     <script>
+    	$( document ).ready(function() {
+    		loadData();
+    	});
+    
     	Dropzone.options.dataUploadDropzone = {
     		dictDefaultMessage: "Drop CSV files here or click to upload",
     		acceptedFiles: ".csv",
@@ -146,6 +150,40 @@
  		    	});
  		  	}
    		};
+    	
+    	function loadData() {
+    		$.get('/api/sensors/replay', function(rawData) {
+    			var data = JSON.parse(rawData);
+    			var colHeaderList = ["uri","name","source","model","mapping","rate"];
+    			var replayRows = $('#replay-rows');
+    			for(var i in data) {
+    				var tableRow = $('<tr>',{class:'replay-row'});
+    				tableRow.data(data);
+    				tableRow.append('<td class="replay-row-index">'+(parseInt(i)+1)+'</td>');
+    				for(var j in colHeaderList) {
+    					var colName = colHeaderList[j];
+    					var colVal = data[i][colName];
+    					var okCol = $('<td class="replay-row-'+colName+'"><i class="glyphicon glyphicon-ok"></i></td>');
+    					var missCol = $('<td class="replay-row-'+colName+'"><i class="glyphicon glyphicon-remove"></i></td>');
+    					if(colName=="source") {
+    						tableRow.append(okCol);
+    					} else if(colName=="mapping") {
+    						if(colVal==undefined) {
+    							tableRow.append(missCol);
+    						} else {
+    							tableRow.append(okCol);
+    						}
+    					} else if(colName=="model") {
+    						tableRow.append(okCol);
+    					} else {
+    						tableRow.append('<td class="replay-row-'+colName+'">'+colVal+'</td>');
+    					}
+    				}
+    				tableRow.append('<td class="replay-row-action"><i class="glyphicon glyphicon-play"></i></td>');
+    				replayRows.append(tableRow);
+    			}
+    		});
+    	}
     	
     	function createForm(dataObj) {
     		var row = $('<div>',{class:'panel-body new-replay-form'});

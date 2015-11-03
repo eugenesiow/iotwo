@@ -25,7 +25,9 @@ public class LoadDataAndReplay implements Runnable {
 	private Map<String,Object> dataSchema;
 	private int timestampColIndex;
 	private EPServiceProvider epService;
-
+	private String name;
+	private int speed=1;
+	
 	public LoadDataAndReplay(long startTime, Sql2o sql2o, EPServiceProvider epService) {
 		this.startTime = startTime;
 		this.sql2o = sql2o;
@@ -34,6 +36,10 @@ public class LoadDataAndReplay implements Runnable {
 	
 	public void setLoadDB(Boolean loadDB) {
 		this.loadDB = loadDB;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 	
 	public void run() {
@@ -46,14 +52,14 @@ public class LoadDataAndReplay implements Runnable {
 				if(parts.length>timestampColIndex) {
 					long rowTime = Long.parseLong(parts[timestampColIndex]);
 					if(rowTime >= startTime) {
-						Thread.sleep((rowTime-previousTime)*1000);
+						Thread.sleep((rowTime-previousTime)*1000/speed);
 						previousTime = rowTime;
 						Map<String, Object> data = new LinkedHashMap<String, Object>();
 			            int i=0;
 			            for(Entry<String,Object> row:dataSchema.entrySet()) {
 			            	data.put(row.getKey(), convertStrToObject(parts[i++],row.getValue()));
 			            }
-			            System.out.println(rowTime);
+			            epService.getEPRuntime().sendEvent(data, name);
 					} else if(loadDB) {
 						
 					}
@@ -101,7 +107,7 @@ public class LoadDataAndReplay implements Runnable {
 			e.printStackTrace();
 		}
 		Path p = Paths.get(fileName);
-		String name = FilenameUtils.removeExtension(p.getFileName().toString());
+		name = FilenameUtils.removeExtension(p.getFileName().toString());
 		epService.getEPAdministrator().getConfiguration().addEventType(name, dataSchema);
 	}
 	
@@ -117,6 +123,9 @@ public class LoadDataAndReplay implements Runnable {
 			case "double":
 				object = Double.class;
 				break;
+			case "integer":
+				object = Integer.class;
+				break;
 			case "timestamp":
 				object = Timestamp.class;
 				break;
@@ -126,13 +135,15 @@ public class LoadDataAndReplay implements Runnable {
 	
 	private static Object convertStrToObject(String val, Object className) {
 		Object object = null;
-		if(val.equals("")) {
+		if(!val.trim().equals("")) {
 			if(className.equals(String.class)) {
 				object = val;
 			} else if(className.equals(Float.class)) {
 				object = Float.parseFloat(val);
 			} else if(className.equals(Timestamp.class)) {
 				object = new Timestamp(Long.parseLong(val));
+			} else if(className.equals(Integer.class)) {
+				object = Integer.parseInt(val);
 			}
 		}
 		return object;

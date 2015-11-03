@@ -18,21 +18,24 @@ import org.sql2o.Sql2o;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
+import uk.ac.soton.ldanalytics.iotwo.CEP.QueryListener;
 import uk.ac.soton.ldanalytics.iotwo.demo.LoadDataAndReplay;
 import uk.ac.soton.ldanalytics.iotwo.model.Model;
 import uk.ac.soton.ldanalytics.iotwo.model.Replay;
 
+import com.espertech.esper.client.Configuration;
+import com.espertech.esper.client.ConfigurationDBRef;
 import com.espertech.esper.client.EPServiceProvider;
 import com.espertech.esper.client.EPServiceProviderManager;
+import com.espertech.esper.client.EPStatement;
 import com.google.gson.Gson;
 
 import freemarker.cache.ClassTemplateLoader;
-import freemarker.template.Configuration;
 
 public class App {
 	public static void main(String[] args) {		
 		FreeMarkerEngine freeMarkerEngine = new FreeMarkerEngine();
-		Configuration freeMarkerConfiguration = new Configuration();
+		freemarker.template.Configuration freeMarkerConfiguration = new freemarker.template.Configuration();
 		freeMarkerConfiguration.setTemplateLoader(new ClassTemplateLoader(App.class, "/templates"));
 		freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
 		Spark.staticFileLocation("/public");
@@ -59,12 +62,47 @@ public class App {
 		Model model = new Model(sql2o);
 		Gson gson = new Gson(); 
 		
-		EPServiceProvider epService = EPServiceProviderManager.getProvider("stream_engine");
-		LoadDataAndReplay loadDataAndReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
-		loadDataAndReplay.setLoadDB(true);
-		loadDataAndReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-environmental-sort.csv");
-		loadDataAndReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/environmental.map");
-		(new Thread(loadDataAndReplay)).start();
+		ConfigurationDBRef dbConfig = new ConfigurationDBRef();
+		dbConfig.setDriverManagerConnection("org.h2.Driver",
+											prop.getProperty("jdbcUrl"), 
+											prop.getProperty("dbUser"), 
+											prop.getProperty("dbPass"));
+
+		Configuration engineConfig = new Configuration();
+		engineConfig.addDatabaseReference("hist", dbConfig);
+		
+		EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider(engineConfig);
+		
+		LoadDataAndReplay envReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
+		envReplay.setLoadDB(true);
+		envReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
+		envReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-environmental-sort.csv");
+		envReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/environmental.map");
+		(new Thread(envReplay)).start();
+		
+		LoadDataAndReplay meterReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
+		meterReplay.setLoadDB(true);
+		meterReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
+		meterReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-meter-replace.csv");
+		meterReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/meter.map");
+		(new Thread(meterReplay)).start();
+		
+		LoadDataAndReplay motionReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
+		motionReplay.setLoadDB(true);
+		motionReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
+		motionReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-motion-replace.csv");
+		motionReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/motion.map");
+		(new Thread(motionReplay)).start();
+		
+		String stmtStr = "    SELECT\n" + 
+				"        avg(environmental.insideTemp) AS averageTemp ,\n" + 
+				"        max(environmental.insideTemp) AS maxTemp ,\n" +
+				"        min(environmental.insideTemp) AS minTemp, URI \n" +
+				"   FROM\n" + 
+				"        environmental.win:time(1 hour),"
+				+ "sql:hist [' select URI from replay ']";
+		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
+		statement.addListener(new QueryListener("tempQuery"));
 		
         get("/", (req, res) -> {        	
         	Map<String, Object> attributes = new HashMap<>();

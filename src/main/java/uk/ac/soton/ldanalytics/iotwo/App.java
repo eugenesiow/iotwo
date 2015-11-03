@@ -18,9 +18,12 @@ import org.sql2o.Sql2o;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
+import uk.ac.soton.ldanalytics.iotwo.demo.LoadDataAndReplay;
 import uk.ac.soton.ldanalytics.iotwo.model.Model;
 import uk.ac.soton.ldanalytics.iotwo.model.Replay;
 
+import com.espertech.esper.client.EPServiceProvider;
+import com.espertech.esper.client.EPServiceProviderManager;
 import com.google.gson.Gson;
 
 import freemarker.cache.ClassTemplateLoader;
@@ -55,6 +58,13 @@ public class App {
 		Sql2o sql2o = new Sql2o(prop.getProperty("jdbcUrl"), prop.getProperty("dbUser"), prop.getProperty("dbPass"));
 		Model model = new Model(sql2o);
 		Gson gson = new Gson(); 
+		
+		EPServiceProvider epService = EPServiceProviderManager.getProvider("stream_engine");
+		LoadDataAndReplay loadDataAndReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
+		loadDataAndReplay.setLoadDB(true);
+		loadDataAndReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-environmental-sort.csv");
+		loadDataAndReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/environmental.map");
+		(new Thread(loadDataAndReplay)).start();
 		
         get("/", (req, res) -> {        	
         	Map<String, Object> attributes = new HashMap<>();

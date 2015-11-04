@@ -94,13 +94,35 @@ public class App {
 		motionReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/motion.map");
 		(new Thread(motionReplay)).start();
 		
-		String stmtStr = "    SELECT\n" + 
-				"        avg(environmental.insideTemp) AS averageTemp ,\n" + 
-				"        max(environmental.insideTemp) AS maxTemp ,\n" +
-				"        min(environmental.insideTemp) AS minTemp, URI \n" +
-				"   FROM\n" + 
-				"        environmental.win:time(1 hour),"
-				+ "sql:hist [' select URI from replay ']";
+//		String stmtStr = "    SELECT\n" + 
+//				"        avg(environmental.insideTemp) AS averageTemp ,\n" + 
+//				"        max(environmental.insideTemp) AS maxTemp ,\n" +
+//				"        min(environmental.insideTemp) AS minTemp, URI \n" +
+//				"   FROM\n" + 
+//				"        environmental.win:time(1 hour),"
+//				+ "sql:hist [' select URI from replay ']";
+//		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
+//		statement.addListener(new QueryListener("tempQuery"));
+		
+		String stmtStr = "SELECT \n" + 
+				"	t1.LOCATION,\n" + 
+				"	meter.MeterName, avg(meter.RealPowerWatts) ,sum(motion.MotionOrNoMotion)\n" + 
+				"FROM\n" + 
+				"	motion.win:time(10 min),\n" + 
+				"	meter.win:time(10 min),\n" + 
+				"	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t1,\n" + 
+				"	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t2\n" + 
+				"WHERE \n" + 
+				"	motion.MotionSensorName=t1.SENSINGDEVICE AND\n" + 
+				"	meter.MeterName=t2.SENSINGDEVICE AND\n" + 
+				"	t1.LOCATION=t2.LOCATION\n" + 
+				"GROUP BY\n" + 
+				"	t1.LOCATION,\n" + 
+				"	meter.MeterName,\n" + 
+				"	motion.MotionSensorName\n" + 
+				"HAVING\n" + 
+				"	sum(motion.MotionOrNoMotion)=0 AND\n" + 
+				"	sum(meter.RealPowerWatts)>0";
 		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
 		statement.addListener(new QueryListener("tempQuery"));
 		

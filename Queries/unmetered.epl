@@ -1,0 +1,19 @@
+SELECT 
+	t1.LOCATION,
+	meter.MeterName
+FROM
+	motion.win:time(10 min),
+	meter.win:time(10 min),
+	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t1,
+	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t2
+WHERE 
+	motion.MotionSensorName=t1.SENSINGDEVICE AND
+	meter.MeterName=t2.SENSINGDEVICE AND
+	t1.LOCATION=t2.LOCATION
+GROUP BY
+	t1.LOCATION,
+	meter.MeterName,
+	motion.MotionSensorName
+HAVING
+	sum(motion.MotionOrNoMotion)=0 AND
+	sum(meter.RealPowerWatts)>0

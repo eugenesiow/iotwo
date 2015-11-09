@@ -2,6 +2,7 @@ package uk.ac.soton.ldanalytics.iotwo;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
+import static spark.Spark.webSocket;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -101,30 +102,43 @@ public class App {
 //				"   FROM\n" + 
 //				"        environmental.win:time(1 hour),"
 //				+ "sql:hist [' select URI from replay ']";
+		String stmtStr = "    SELECT\n" + 
+		"        environmental.insideTemp AS currentTemp \n" + 
+		"   FROM\n" + 
+		"        environmental.std:lastevent()";
 //		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
 //		statement.addListener(new QueryListener("tempQuery"));
 		
-		String stmtStr = "SELECT \n" + 
-				"	t1.LOCATION,\n" + 
-				"	meter.MeterName, avg(meter.RealPowerWatts) ,sum(motion.MotionOrNoMotion)\n" + 
-				"FROM\n" + 
-				"	motion.win:time(10 min),\n" + 
-				"	meter.win:time(10 min),\n" + 
-				"	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t1,\n" + 
-				"	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t2\n" + 
-				"WHERE \n" + 
-				"	motion.MotionSensorName=t1.SENSINGDEVICE AND\n" + 
-				"	meter.MeterName=t2.SENSINGDEVICE AND\n" + 
-				"	t1.LOCATION=t2.LOCATION\n" + 
-				"GROUP BY\n" + 
-				"	t1.LOCATION,\n" + 
-				"	meter.MeterName,\n" + 
-				"	motion.MotionSensorName\n" + 
-				"HAVING\n" + 
-				"	sum(motion.MotionOrNoMotion)=0 AND\n" + 
-				"	sum(meter.RealPowerWatts)>0";
+//		String stmtStr = "SELECT \n" + 
+//				"	t1.LOCATION,\n" + 
+//				"	meter.MeterName, avg(meter.RealPowerWatts) ,sum(motion.MotionOrNoMotion)\n" + 
+//				"FROM\n" + 
+//				"	motion.win:time(10 min),\n" + 
+//				"	meter.win:time(10 min),\n" + 
+//				"	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t1,\n" + 
+//				"	sql:hist [' select SENSINGDEVICE, LOCATION from sensors '] as t2\n" + 
+//				"WHERE \n" + 
+//				"	motion.MotionSensorName=t1.SENSINGDEVICE AND\n" + 
+//				"	meter.MeterName=t2.SENSINGDEVICE AND\n" + 
+//				"	t1.LOCATION=t2.LOCATION\n" + 
+//				"GROUP BY\n" + 
+//				"	t1.LOCATION,\n" + 
+//				"	meter.MeterName,\n" + 
+//				"	motion.MotionSensorName\n" + 
+//				"HAVING\n" + 
+//				"	sum(motion.MotionOrNoMotion)=0 AND\n" + 
+//				"	sum(meter.RealPowerWatts)>0";
 		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
 		statement.addListener(new QueryListener("tempQuery"));
+		
+		stmtStr = "    SELECT\n" + 
+		"        environmental.insideHumidity AS currentHumidity \n" + 
+		"   FROM\n" + 
+		"        environmental.std:lastevent()";
+		EPStatement hstatement = epService.getEPAdministrator().createEPL(stmtStr);
+		hstatement.addListener(new QueryListener("humidityQuery"));
+		
+		webSocket("/events", EventsWebSocket.class);
 		
         get("/", (req, res) -> {        	
         	Map<String, Object> attributes = new HashMap<>();

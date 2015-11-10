@@ -39,7 +39,7 @@ public class App {
 		freemarker.template.Configuration freeMarkerConfiguration = new freemarker.template.Configuration();
 		freeMarkerConfiguration.setTemplateLoader(new ClassTemplateLoader(App.class, "/templates"));
 		freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
-		Spark.staticFileLocation("/public");
+		Spark.staticFileLocation("/public/freeboard");
 		Properties prop = new Properties();
 		InputStream input = null;
 		
@@ -83,7 +83,7 @@ public class App {
 		
 		LoadDataAndReplay meterReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
 		meterReplay.setLoadDB(true);
-		meterReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
+		meterReplay.setSpeed(Integer.parseInt(prop.getProperty("speed"))/2);
 		meterReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-meter-replace.csv");
 		meterReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/meter.map");
 		(new Thread(meterReplay)).start();
@@ -102,8 +102,9 @@ public class App {
 //				"   FROM\n" + 
 //				"        environmental.win:time(1 hour),"
 //				+ "sql:hist [' select URI from replay ']";
-		String stmtStr = "    SELECT\n" + 
-		"        environmental.insideTemp AS currentTemp \n" + 
+		String stmtStr = "SELECT\n" + 
+		"       environmental.insideTemp AS currentTemp, \n" +
+		"		environmental.insideHumidity AS currentHumidity \n" + 
 		"   FROM\n" + 
 		"        environmental.std:lastevent()";
 //		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
@@ -132,11 +133,14 @@ public class App {
 		statement.addListener(new QueryListener("tempQuery"));
 		
 		stmtStr = "    SELECT\n" + 
-		"        environmental.insideHumidity AS currentHumidity \n" + 
+		"        avg(meter.RealPowerWatts) as averagePower, meter.MeterName as meterName \n" + 
 		"   FROM\n" + 
-		"        environmental.std:lastevent()";
+		"        meter.win:time(30 sec)" +
+		"	GROUP BY\n" + 
+		"		meter.MeterName" +
+		"	HAVING avg(meter.RealPowerWatts) > 0";
 		EPStatement hstatement = epService.getEPAdministrator().createEPL(stmtStr);
-		hstatement.addListener(new QueryListener("humidityQuery"));
+		hstatement.addListener(new QueryListener("meterQuery"));
 		
 		webSocket("/events", EventsWebSocket.class);
 		
@@ -167,6 +171,10 @@ public class App {
         	replay.generateDate();
 //        	return gson.toJson(replay);
         	return model.createReplay(replay);
+        });
+        
+        post("api/queries/register", "application/json", (req, res) -> {    
+        	return req.body();
         });
     }
 }

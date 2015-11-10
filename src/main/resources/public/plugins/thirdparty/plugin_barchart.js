@@ -49,7 +49,7 @@
 	});
 	
 	freeboard.addStyle('.tw-barchart',
-		'height:300px;width:100%;');
+		'height:280px;width:100%;');
 	freeboard.addStyle('.epoch','font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12pt;');
 	freeboard.addStyle('.axis path','fill: transparent; stroke: #d0d0d0;');
 	freeboard.addStyle('.axis path','fill: transparent; stroke: #d0d0d0;');
@@ -126,8 +126,6 @@
 				titleElement.empty();
 				titleElement.hide();
 			}
-
-			updateValueSizing();
 		}
 
 		// **onCalculatedValueChanged(settingName, newValue)** (required) : A public function we must implement that will be called when a calculated value changes. Since calculated values can change at any time (like when a datasource is updated) we handle them in a special callback function here.
@@ -153,5 +151,7 @@
 		self.onDispose = function()
 		{
 		}
+		
+		this.onSettingsChanged(settings);
 	}
 }());

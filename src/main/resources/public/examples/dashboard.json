@@ -1,0 +1,72 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Environmental",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Temperature",
+						"size": "regular",
+						"value": "datasources[\"Events\"][\"currentTemp\"]",
+						"sparkline": true,
+						"animate": true
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Humidity",
+						"size": "regular",
+						"value": "datasources[\"Events\"][\"currentHumidity\"]",
+						"sparkline": true,
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "Meters",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"type": "barchart",
+					"settings": {
+						"title": "Last Average Usage",
+						"chart_id": "meter_usage",
+						"bar_label": "datasources[\"Events\"][\"meterName\"]",
+						"value": "datasources[\"Events\"][\"averagePower\"]"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Events",
+			"type": "iot_ws_stream",
+			"settings": {
+				"url": "ws://localhost:4567/events"
+			}
+		}
+	],
+	"columns": 3
+}

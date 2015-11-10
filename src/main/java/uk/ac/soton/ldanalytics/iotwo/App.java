@@ -39,7 +39,7 @@ public class App {
 		freemarker.template.Configuration freeMarkerConfiguration = new freemarker.template.Configuration();
 		freeMarkerConfiguration.setTemplateLoader(new ClassTemplateLoader(App.class, "/templates"));
 		freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
-		Spark.staticFileLocation("/public/freeboard");
+		Spark.staticFileLocation("/public");
 		Properties prop = new Properties();
 		InputStream input = null;
 		

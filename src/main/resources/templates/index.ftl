@@ -14,6 +14,7 @@
                 // *** Load more plugins here ***
                 "plugins/thirdparty/plugin_json_ws.js",
                 "plugins/thirdparty/plugin_barchart.js",
+                "plugins/thirdparty/plugin_heatmap.js",
                 function(){
                     $(function()
                     { //DOM Ready

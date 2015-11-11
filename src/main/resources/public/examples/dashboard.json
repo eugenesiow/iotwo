@@ -57,6 +57,27 @@
 					}
 				}
 			]
+		},
+		{
+			"title": "Motion",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"type": "heatmap",
+					"settings": {
+						"chart_id": "motion_map",
+						"label": "datasources[\"Events\"][\"roomName\"]",
+						"value": "datasources[\"Events\"][\"totalMotion\"]"
+					}
+				}
+			]
 		}
 	],
 	"datasources": [

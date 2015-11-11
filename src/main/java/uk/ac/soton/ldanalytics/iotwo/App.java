@@ -129,6 +129,7 @@ public class App {
 //				"HAVING\n" + 
 //				"	sum(motion.MotionOrNoMotion)=0 AND\n" + 
 //				"	sum(meter.RealPowerWatts)>0";
+		
 		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
 		statement.addListener(new QueryListener("tempQuery"));
 		
@@ -141,6 +142,17 @@ public class App {
 		"	HAVING avg(meter.RealPowerWatts) > 0";
 		EPStatement hstatement = epService.getEPAdministrator().createEPL(stmtStr);
 		hstatement.addListener(new QueryListener("meterQuery"));
+		
+//		stmtStr = "SELECT\n" + 
+//				"	motion.MotionSensorName as roomName,\n" + 
+//				"	sum(motion.MotionOrNoMotion) as totalMotion\n" + 
+//				"FROM\n" + 
+//				"	motion.win:time_batch(10 sec)\n" + 
+//				"GROUP BY\n" + 
+//				"	motion.MotionSensorName\n" + 
+//				"HAVING sum(motion.MotionOrNoMotion) > 0";
+//		EPStatement mstatement = epService.getEPAdministrator().createEPL(stmtStr);
+//		mstatement.addListener(new QueryListener("motionQuery"));
 		
 		webSocket("/events", EventsWebSocket.class);
 		

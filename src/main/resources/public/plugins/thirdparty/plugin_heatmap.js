@@ -51,10 +51,10 @@
 	freeboard.addStyle('.axis .tick text','fill: #d0d0d0;font-size: 9pt;');
 	freeboard.addStyle('.bar.category1','fill: #909CFF;');
 	freeboard.addStyle('.category1 .bucket','fill: #1f77b4;');
-	freeboard.addStyle('.category2 .bucket','fill: #2ca02c;');
-	freeboard.addStyle('.category3 .bucket','fill: #d62728;');
-	freeboard.addStyle('.category4 .bucket','fill: #8c564b;');
-	freeboard.addStyle('.category5 .bucket','fill: #7f7f7f;');
+//	freeboard.addStyle('.category2 .bucket','fill: #2ca02c;');
+//	freeboard.addStyle('.category3 .bucket','fill: #d62728;');
+//	freeboard.addStyle('.category4 .bucket','fill: #8c564b;');
+//	freeboard.addStyle('.category5 .bucket','fill: #7f7f7f;');
 
 	// ### Widget Implementation
 	//
@@ -133,7 +133,7 @@
 					chartData[0].histogram[labelObj] = newValue;
 				}
 				chart.push(chartData);
-				updateValueSizing();
+//				updateValueSizing();
 			}
 			
 		}

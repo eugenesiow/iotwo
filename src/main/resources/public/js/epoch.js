@@ -2788,11 +2788,12 @@ Epoch.Time.Plot = (function(superClass) {
   };
 
   Plot.prototype.ySvgLeft = function() {
-    if (this.options.range != null) {
+	if (this.options.range != null) {
       return this.ySvg(this.options.range.left);
     } else {
       return this.ySvg();
     }
+    
   };
 
   Plot.prototype.ySvgRight = function() {
@@ -3548,6 +3549,10 @@ Epoch.Time.Heatmap = (function(superClass) {
       buckets: (function() {
         var k, ref, results;
         results = [];
+        var dom = this.getGroups();
+        for(var idx in dom) {
+          	results[dom[idx]] = 0;
+          }
 //        for (i = k = 0, ref = this.options.buckets; 0 <= ref ? k < ref : k > ref; i = 0 <= ref ? ++k : --k) {
 //          results.push(0);
 //        }
@@ -3584,12 +3589,24 @@ Epoch.Time.Heatmap = (function(superClass) {
   };
 
   Heatmap.prototype.y = function() {
-	  console.log(d3.scale.linear().domain(this.options.bucketRange).range([this.innerHeight(), 0]));
+//	  console.log(d3.scale.linear().domain(this.options.bucketRange).range([this.innerHeight(), 0]));
     return d3.scale.linear().domain(this.options.bucketRange).range([this.innerHeight(), 0]);
   };
 
+  Heatmap.prototype.getGroups = function() {
+	  var histogram = this.getVisibleLayers()[0].values[0].histogram;
+	  var dom = [];
+	  if(histogram != null) {
+		  for(var index in histogram) {
+			  dom.push(index);
+		  }
+	  }
+	  return dom;
+  }
+  
   Heatmap.prototype.ySvg = function() {
-	  return d3.scale.ordinal().domain(["kitchen_corner","livingroom_corner"]).rangeRoundBands([this.innerHeight() / this.pixelRatio, 0]);
+	  var dom = this.getGroups();
+	  return d3.scale.ordinal().domain(dom).range([this.innerHeight() / this.pixelRatio, 0]);
 //    return d3.scale.linear().domain(this.options.bucketRange).range([this.innerHeight() / this.pixelRatio, 0]);
   };
 
@@ -3657,6 +3674,10 @@ Epoch.Time.Heatmap = (function(superClass) {
     bucketTotals = (function() {
       var k, ref1, results;
       results = [];
+      var dom = this.getGroups();
+      for(var idx in dom) {
+      	results[dom[idx]] = 0;
+      }
 //      for (i = k = 0, ref1 = this.options.buckets; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
 //        results.push(0);
 //      }
@@ -3691,7 +3712,7 @@ Epoch.Time.Heatmap = (function(superClass) {
       if (!hasProp.call(bucketTotals, bucket)) continue;
       sum = bucketTotals[bucket];
       color = this._avgLab(entries, bucket);
-      console.log(sum + " : " + bucket + " : " + color);
+      
       max = 0;
       for (m = 0, len1 = entries.length; m < len1; m++) {
         entry = entries[m];
@@ -3700,9 +3721,12 @@ Epoch.Time.Heatmap = (function(superClass) {
       if (sum > 0 || this.options.paintZeroValues) {
         this.p.fillStyle = this._computeColor(sum, max, color);
         this.p.fillRect(xPos, (j - 1) * h, w - this.options.bucketPadding, h - this.options.bucketPadding);
+        console.log(sum + " : " + bucket + " : " + color + ":" + (j - 1) * h + ":" + this.p.fillStyle);
       }
       results.push(j--);
     }
+    
+    
     return results;
   };
 
@@ -3715,12 +3739,19 @@ Epoch.Time.Heatmap = (function(superClass) {
   Heatmap.prototype._avgLab = function(entries, bucket) {
     var a, b, color, entry, i, k, l, len, ratio, ref, total, value;
     ref = [0, 0, 0, 0], l = ref[0], a = ref[1], b = ref[2], total = ref[3];
+//    for (k = 0, len = entries.length; k < len; k++) {
+//      entry = entries[k];
+//      console.log(entry);
+//      if (entry.buckets[bucket] == null) {
+//        continue;
+//      }
+//      total += entry.buckets[bucket];
+//    }
     for (k = 0, len = entries.length; k < len; k++) {
-      entry = entries[k];
-      if (entry.buckets[bucket] == null) {
-        continue;
-      }
-      total += entry.buckets[bucket];
+    	entry = entries[k];
+    	for(var bucketName in entry.buckets) {
+    		total += entry.buckets[bucketName];
+    	}
     }
     for (i in entries) {
       if (!hasProp.call(entries, i)) continue;
@@ -3731,6 +3762,7 @@ Epoch.Time.Heatmap = (function(superClass) {
         value = 0;
       }
       ratio = value / total;
+//      console.log(value+":"+total+":" + ratio);
       color = d3.lab(entry.color);
       l += ratio * color.l;
       a += ratio * color.a;

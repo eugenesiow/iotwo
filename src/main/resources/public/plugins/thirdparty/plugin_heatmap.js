@@ -86,12 +86,13 @@
 			
 			chart = $('#'+currentSettings.chart_id).epoch({ 
 				type: 'time.heatmap',
-				ticks: {left:4, bottom: 20},
+				ticks: {left: 10, bottom: 20},
 				buckets: 5,
 				bucketRange: [0,20],
 				axes: ['bottom', 'left'],
 				margins: {top:10,bottom:25,left:80,right:10},
-//				tickFormats: {left:function(d) {return d.split("_")[1];}},
+				tickFormats: {left:function(d) {return d.split("_")[0];}},
+				paintZeroValues: true,
 				data: [{"label":currentSettings.chart_id,"values":[{time:Math.floor(Date.now() / 1000),histogram:{"kitchen_corner":0,"livingroom_corner":0,"master_corner":0,"bedroom_corner":0,"basement_corner":0}}]}]
 			});
 

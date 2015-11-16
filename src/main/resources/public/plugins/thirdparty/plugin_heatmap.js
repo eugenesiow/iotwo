@@ -15,7 +15,7 @@
         "description" : "",
 		// **external_scripts** : Any external scripts that should be loaded before the plugin instance is created.
 		"external_scripts": [
-			"http://d3js.org/d3.v3.min.js", "https://cdnjs.cloudflare.com/ajax/libs/epoch/0.8.4/js/epoch.min.js"
+			"http://d3js.org/d3.v3.min.js", "js/epoch.js"
 		],
 		// **fill_size** : If this is set to true, the widget will fill be allowed to fill the entire space given it, otherwise it will contain an automatic padding of around 10 pixels around it.
 		"fill_size" : false,
@@ -50,6 +50,11 @@
 	freeboard.addStyle('.axis path','fill: transparent; stroke: #d0d0d0;');
 	freeboard.addStyle('.axis .tick text','fill: #d0d0d0;font-size: 9pt;');
 	freeboard.addStyle('.bar.category1','fill: #909CFF;');
+	freeboard.addStyle('.category1 .bucket','fill: #1f77b4;');
+	freeboard.addStyle('.category2 .bucket','fill: #2ca02c;');
+	freeboard.addStyle('.category3 .bucket','fill: #d62728;');
+	freeboard.addStyle('.category4 .bucket','fill: #8c564b;');
+	freeboard.addStyle('.category5 .bucket','fill: #7f7f7f;');
 
 	// ### Widget Implementation
 	//
@@ -83,10 +88,11 @@
 				type: 'time.heatmap',
 				ticks: {left:4, bottom: 20},
 				buckets: 5,
+				bucketRange: [0,20],
 				axes: ['bottom', 'left'],
 				margins: {top:10,bottom:25,left:80,right:10},
 //				tickFormats: {left:function(d) {return d.split("_")[1];}},
-				data: [{"label":currentSettings.chart_id,"values":[{time:Math.floor(Date.now() / 1000),histogram:{0:0,25:0,50:0,75:0, 100:0}}]}]
+				data: [{"label":currentSettings.chart_id,"values":[{time:Math.floor(Date.now() / 1000),histogram:{"kitchen_corner":0,"livingroom_corner":0,"master_corner":0,"bedroom_corner":0,"basement_corner":0}}]}]
 			});
 
 //			updateValueSizing();
@@ -120,10 +126,10 @@
 				var chartData = [{time:Math.floor(Date.now() / 1000),histogram:{}}];
 				if(newValue.constructor == Array) {
 					for(var i=0;i<labelObj.length;i++) {
-						chartData[0].histogram[i*25] = newValue[i];
+						chartData[0].histogram[labelObj[i]] = newValue[i];
 					}
 				} else {
-					chartData[0].histogram[0] = newValue;
+					chartData[0].histogram[labelObj] = newValue;
 				}
 				chart.push(chartData);
 				updateValueSizing();

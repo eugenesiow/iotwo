@@ -15,7 +15,7 @@
         "description" : "A horizontal bar chart",
 		// **external_scripts** : Any external scripts that should be loaded before the plugin instance is created.
 		"external_scripts": [
-			"http://d3js.org/d3.v3.min.js", "https://cdnjs.cloudflare.com/ajax/libs/epoch/0.8.4/js/epoch.min.js"
+			"http://d3js.org/d3.v3.min.js", "js/epoch.js"
 		],
 		// **fill_size** : If this is set to true, the widget will fill be allowed to fill the entire space given it, otherwise it will contain an automatic padding of around 10 pixels around it.
 		"fill_size" : false,
@@ -135,11 +135,20 @@
 			{
 				barLabel = newValue;
 			} else if(settingName == "value") {
-				barData[barLabel] = newValue;
+				if(newValue.constructor == Array) {
+					for(var i=0;i<barLabel.length;i++) {
+						barData[barLabel[i]] = newValue[i];
+					}
+				} else {
+					barData[barLabel] = newValue;
+				}
 				var chartData = [{"label":currentSettings.chart_id,"values":[]}];
+//				var max = 0;
 				for(var i in barData) {
 					var row = {x:i,y:barData[i]};
 					chartData[0].values.push(row);
+//					if(barData[i]>max)
+//						max = barData[i];
 				}
 				chart.update(chartData);
 				updateValueSizing();

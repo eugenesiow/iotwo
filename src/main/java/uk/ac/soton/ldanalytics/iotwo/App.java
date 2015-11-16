@@ -104,7 +104,8 @@ public class App {
 //				+ "sql:hist [' select URI from replay ']";
 		String stmtStr = "SELECT\n" + 
 		"       environmental.insideTemp AS currentTemp, \n" +
-		"		environmental.insideHumidity AS currentHumidity \n" + 
+		"		environmental.insideHumidity AS currentHumidity, \n" + 
+		"		environmental.windSpeed AS currentWindSpeed \n" + 
 		"   FROM\n" + 
 		"        environmental.std:lastevent()";
 //		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
@@ -143,16 +144,16 @@ public class App {
 		EPStatement hstatement = epService.getEPAdministrator().createEPL(stmtStr);
 		hstatement.addListener(new QueryListener("meterQuery"));
 		
-//		stmtStr = "SELECT\n" + 
-//				"	motion.MotionSensorName as roomName,\n" + 
-//				"	sum(motion.MotionOrNoMotion) as totalMotion\n" + 
-//				"FROM\n" + 
-//				"	motion.win:time_batch(10 sec)\n" + 
-//				"GROUP BY\n" + 
-//				"	motion.MotionSensorName\n" + 
-//				"HAVING sum(motion.MotionOrNoMotion) > 0";
-//		EPStatement mstatement = epService.getEPAdministrator().createEPL(stmtStr);
-//		mstatement.addListener(new QueryListener("motionQuery"));
+		stmtStr = "SELECT\n" + 
+				"	motion.MotionSensorName as roomName,\n" + 
+				"	sum(motion.MotionOrNoMotion) as totalMotion\n" + 
+				"FROM\n" + 
+				"	motion.win:time_batch(10 sec)\n" + 
+				"GROUP BY\n" + 
+				"	motion.MotionSensorName\n" + 
+				"HAVING sum(motion.MotionOrNoMotion) > 0";
+		EPStatement mstatement = epService.getEPAdministrator().createEPL(stmtStr);
+		mstatement.addListener(new QueryListener("motionQuery"));
 		
 		webSocket("/events", EventsWebSocket.class);
 		

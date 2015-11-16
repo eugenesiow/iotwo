@@ -17,7 +17,7 @@
 				{
 					"type": "text_widget",
 					"settings": {
-						"title": "Temperature",
+						"title": "Internal Temperature",
 						"size": "regular",
 						"value": "datasources[\"Events\"][\"currentTemp\"]",
 						"sparkline": true,
@@ -27,11 +27,21 @@
 				{
 					"type": "text_widget",
 					"settings": {
-						"title": "Humidity",
+						"title": "Internal Humidity",
 						"size": "regular",
 						"value": "datasources[\"Events\"][\"currentHumidity\"]",
 						"sparkline": true,
 						"animate": true
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Wind Speed",
+						"units": "kn",
+						"value": "datasources[\"Events\"][\"currentWindSpeed\"]",
+						"min_value": 0,
+						"max_value": "5.0"
 					}
 				}
 			]

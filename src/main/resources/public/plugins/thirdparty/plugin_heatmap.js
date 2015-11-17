@@ -85,6 +85,7 @@
 			$(element).append(displayElement);
 			
 			chart = $('#'+currentSettings.chart_id).epoch({ 
+				width: 590,
 				type: 'time.heatmap',
 				ticks: {left: 10, bottom: 20},
 				buckets: 5,
@@ -93,6 +94,7 @@
 				margins: {top:10,bottom:25,left:80,right:10},
 				tickFormats: {left:function(d) {return d.split("_")[0];}},
 				paintZeroValues: true,
+//				opacity: function(value, max) { return Math.pow(value/max, 0.384); },
 				data: [{"label":currentSettings.chart_id,"values":[{time:Math.floor(Date.now() / 1000),histogram:{"kitchen_corner":0,"livingroom_corner":0,"master_corner":0,"bedroom_corner":0,"basement_corner":0}}]}]
 			});
 

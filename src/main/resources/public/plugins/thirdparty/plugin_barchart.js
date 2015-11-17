@@ -92,10 +92,11 @@
 				orientation: 'horizontal',
 				ticks: {left:20},
 				margins: {top:10,bottom:25,left:80,right:10},
-				tickFormats: {left:function(d) {return d.split("_")[1];}}
+				tickFormats: {left:function(d) {return d.split("_")[1];}},
+				width: 590
 			});
 
-			updateValueSizing();
+//			updateValueSizing();
 		}
 
 		// **getHeight()** (required) : A public function we must implement that will be called when freeboard wants to know how big we expect to be when we render, and returns a height. This function will be called any time a user updates their settings (including the first time they create the widget).

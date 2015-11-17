@@ -105,7 +105,9 @@ public class App {
 		String stmtStr = "SELECT\n" + 
 		"       environmental.insideTemp AS currentTemp, \n" +
 		"		environmental.insideHumidity AS currentHumidity, \n" + 
-		"		environmental.windSpeed AS currentWindSpeed \n" + 
+		"		environmental.windSpeed AS currentWindSpeed, \n" + 
+		"		environmental.windGust AS currentWindGust, \n" + 
+		"		environmental.windGustDirectionDegrees AS currentWindDirection \n" + 
 		"   FROM\n" + 
 		"        environmental.std:lastevent()";
 //		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);

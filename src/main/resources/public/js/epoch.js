@@ -255,8 +255,13 @@ Epoch.Util.toRGBA = function(color, opacity) {
   if ((parts = color.match(/^rgba\(\s*([0-9]+)\s*,\s*([0-9]+)\s*,\s*([0-9]+)\s*,\s*[0-9\.]+\)/))) {
     all = parts[0], r = parts[1], g = parts[2], b = parts[3];
     result = "rgba(" + r + "," + g + "," + b + "," + opacity + ")";
+//    console.log("first:"+result);
   } else if ((v = d3.rgb(color))) {
+	  if(isNaN(opacity)) {
+		  opacity = 0.1;
+	  }
     result = "rgba(" + v.r + "," + v.g + "," + v.b + "," + opacity + ")";
+//    console.log("2nd:"+result);
   }
   return result;
 };
@@ -3606,7 +3611,7 @@ Epoch.Time.Heatmap = (function(superClass) {
   
   Heatmap.prototype.ySvg = function() {
 	  var dom = this.getGroups();
-	  return d3.scale.ordinal().domain(dom).range([this.innerHeight() / this.pixelRatio, 0]);
+	  return d3.scale.ordinal().domain(dom).rangePoints([this.innerHeight() / this.pixelRatio, 0],1);
 //    return d3.scale.linear().domain(this.options.bucketRange).range([this.innerHeight() / this.pixelRatio, 0]);
   };
 
@@ -3719,9 +3724,10 @@ Epoch.Time.Heatmap = (function(superClass) {
         max += (entry.buckets[bucket] / sum) * maxTotal;
       }
       if (sum > 0 || this.options.paintZeroValues) {
-        this.p.fillStyle = this._computeColor(sum, max, color);
+        this.p.fillStyle = this._computeColor(max, max, color);
+//    	  this.p.fillStyle = this._computeColor(sum, max, color);
         this.p.fillRect(xPos, (j - 1) * h, w - this.options.bucketPadding, h - this.options.bucketPadding);
-        console.log(sum + " : " + bucket + " : " + color + ":" + (j - 1) * h + ":" + this.p.fillStyle);
+//        console.log(sum + " : " + bucket + " : " + color + ":" + (j - 1) * h + ":" + this.p.fillStyle + ":" + max);
       }
       results.push(j--);
     }

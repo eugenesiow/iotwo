@@ -7,9 +7,11 @@
 			"title": "Environmental",
 			"width": 1,
 			"row": {
+				"1": 1,
 				"3": 1
 			},
 			"col": {
+				"1": 1,
 				"3": 1
 			},
 			"col_width": 1,
@@ -43,6 +45,14 @@
 						"min_value": 0,
 						"max_value": "5.0"
 					}
+				},
+				{
+					"type": "pointer",
+					"settings": {
+						"direction": "datasources[\"Events\"][\"currentWindDirection\"]",
+						"value_text": "datasources[\"Events\"][\"currentWindGust\"]",
+						"units": "kn"
+					}
 				}
 			]
 		},
@@ -50,9 +60,11 @@
 			"title": "Meters",
 			"width": 1,
 			"row": {
+				"1": 17,
 				"3": 1
 			},
 			"col": {
+				"1": 1,
 				"3": 2
 			},
 			"col_width": 2,
@@ -72,10 +84,14 @@
 			"title": "Motion",
 			"width": 1,
 			"row": {
-				"3": 1
+				"1": 29,
+				"3": 13,
+				"4": 1
 			},
 			"col": {
-				"3": 2
+				"1": 1,
+				"3": 2,
+				"4": 2
 			},
 			"col_width": 2,
 			"widgets": [

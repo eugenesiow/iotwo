@@ -39,7 +39,7 @@
 				{
 					"type": "gauge",
 					"settings": {
-						"title": "Wind Speed",
+						"title": "Wind Speed, Gust & Direction",
 						"units": "kn",
 						"value": "datasources[\"Events\"][\"currentWindSpeed\"]",
 						"min_value": 0,
@@ -51,7 +51,7 @@
 					"settings": {
 						"direction": "datasources[\"Events\"][\"currentWindDirection\"]",
 						"value_text": "datasources[\"Events\"][\"currentWindGust\"]",
-						"units": "kn"
+						"units": "km/hr"
 					}
 				}
 			]

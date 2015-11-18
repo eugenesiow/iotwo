@@ -34,6 +34,17 @@
 				"name"        : "value",
 				"display_name": "Value",
 				"type"        : "calculated"
+			},
+			{
+				"name"        : "buckets",
+				"display_name": "Buckets",
+				"type"        : "text",
+                "default_value": 6
+			},
+			{
+				"name"        : "histogram",
+				"display_name": "Histogram Categories",
+				"type"        : "text"
 			}
 		],
 		// Same as with datasource plugin, but there is no updateCallback parameter in this case.
@@ -88,14 +99,14 @@
 				width: 590,
 				type: 'time.heatmap',
 				ticks: {left: 10, bottom: 20},
-				buckets: 5,
+				buckets: currentSettings.buckets,
 				bucketRange: [0,20],
 				axes: ['bottom', 'left'],
 				margins: {top:10,bottom:25,left:80,right:10},
 				tickFormats: {left:function(d) {return d.split("_")[0];}},
 				paintZeroValues: true,
 //				opacity: function(value, max) { return Math.pow(value/max, 0.384); },
-				data: [{"label":currentSettings.chart_id,"values":[{time:Math.floor(Date.now() / 1000),histogram:{"kitchen_corner":0,"livingroom_corner":0,"master_corner":0,"bedroom_corner":0,"basement_corner":0}}]}]
+				data: [{"label":currentSettings.chart_id,"values":[{time:Math.floor(Date.now() / 1000),histogram:JSON.parse(currentSettings.histogram)}]}]
 			});
 
 //			updateValueSizing();

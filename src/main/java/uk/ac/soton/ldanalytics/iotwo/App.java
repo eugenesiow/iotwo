@@ -72,27 +72,29 @@ public class App {
 		Configuration engineConfig = new Configuration();
 		engineConfig.addDatabaseReference("hist", dbConfig);
 		
+		String homePath = prop.getProperty("homePath");
+		
 		EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider(engineConfig);
 		
 		LoadDataAndReplay envReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
 		envReplay.setLoadDB(true);
 		envReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
-		envReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-environmental-sort.csv");
-		envReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/environmental.map");
+		envReplay.loadFile(homePath+"data/all-environmental-sort.csv");
+		envReplay.loadSchema(homePath+"schema/environmental.map");
 		(new Thread(envReplay)).start();
 		
 		LoadDataAndReplay meterReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
 		meterReplay.setLoadDB(true);
 		meterReplay.setSpeed(Integer.parseInt(prop.getProperty("speed"))/2);
-		meterReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-meter-replace.csv");
-		meterReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/meter.map");
+		meterReplay.loadFile(homePath+"data/all-meter-replace.csv");
+		meterReplay.loadSchema(homePath+"schema/meter.map");
 		(new Thread(meterReplay)).start();
 		
 		LoadDataAndReplay motionReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
 		motionReplay.setLoadDB(true);
 		motionReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
-		motionReplay.loadFile("/Users/eugene/Documents/workspace/iotwo/data/all-motion-replace.csv");
-		motionReplay.loadSchema("/Users/eugene/Documents/workspace/iotwo/schema/motion.map");
+		motionReplay.loadFile(homePath+"data/all-motion-replace.csv");
+		motionReplay.loadSchema(homePath+"schema/motion.map");
 		(new Thread(motionReplay)).start();
 		
 //		String stmtStr = "    SELECT\n" + 

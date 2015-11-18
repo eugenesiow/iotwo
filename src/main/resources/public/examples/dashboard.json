@@ -100,7 +100,9 @@
 					"settings": {
 						"chart_id": "motion_map",
 						"label": "datasources[\"Events\"][\"roomName\"]",
-						"value": "datasources[\"Events\"][\"totalMotion\"]"
+						"value": "datasources[\"Events\"][\"totalMotion\"]",
+						"buckets": 6,
+						"histogram": "{\"kitchen_corner\":0,\"livingroom_corner\":0,\"master_corner\":0,\"bedroom_corner\":0,\"basement_corner\":0,\"guest_corner\":0}"
 					}
 				}
 			]

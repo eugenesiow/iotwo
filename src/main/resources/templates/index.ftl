@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>IoT Dashboard</title>
+    <title>IoT freeboard</title>
 	<meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -47,7 +47,7 @@
     <div id="admin-bar">
         <div id="admin-menu">
             <div id="board-tools">
-                <h1 id="board-logo" class="title bordered">freeboard</h1>
+                <h1 id="board-logo" class="title bordered">IoT <small>freeboard</small></h1>
                 <div id="board-actions">
                     <ul class="board-toolbar vertical">
                         <li data-bind="click: loadDashboardFromLocalFile"><i id="full-screen-icon" class="icon-folder-open icon-white"></i><label id="full-screen">Load Freeboard</label></li>

@@ -3,16 +3,30 @@ PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX  iot:  <http://purl.oclc.org/NET/iot#>
 PREFIX iotsn: <http://iot.soton.ac.uk/smarthome/sensor#>
 
-SELECT ?val ?val2
+SELECT ?currentTemp ?currentHumidity ?currentWindSpeed ?currentWindGust ?currentWindDirection
 FROM NAMED STREAM <http://iot.soton.ac.uk/smarthome/environmental> [LAST]
 WHERE {
 	?obs ssn:observedBy iotsn:environmental1;
-		ssn:observationResult ?snout;
-		ssn:observationResult ?snout2.
-	?snout ssn:hasValue ?obsval.
-	?snout2 ssn:hasValue ?obsval2.
-	?obsval a iot:InternalTemperatureValue;
+		ssn:observationResult ?sntemp;
+		ssn:observationResult ?snhumidity;
+		ssn:observationResult ?snwindspeed;
+		ssn:observationResult ?snwindgust;
+		ssn:observationResult ?snwinddir.
+	
+	?sntemp ssn:hasValue ?valtemp.
+	?snhumidity ssn:hasValue ?valhumidity.
+	?snwindspeed ssn:hasValue ?valwindspeed.
+	?snwindgust ssn:hasValue ?valwindgust.
+	?snwinddir ssn:hasValue ?valwinddir.
+	
+	?valtemp a iot:InternalTemperatureValue;
 		iot:hasQuantityValue ?currentTemp.
-	?obsval2 a iot:ExternalTemperatureValue;
-		iot:hasQuantityValue ?val2.
+	?valhumidity a iot:InternalHumidityValue;
+		iot:hasQuantityValue ?currentHumidity.
+	?valwindspeed a iot:WindSpeedValue;
+		iot:hasQuantityValue ?currentWindSpeed.
+	?valwindgust a iot:WindGustValue;
+		iot:hasQuantityValue ?currentWindGust.
+	?valwinddir a iot:WindGustDirectionValue;
+		iot:hasQuantityValue ?currentWindDirection.
 }

@@ -80,7 +80,7 @@ public class App {
 		envReplay.setLoadDB(true);
 		envReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
 		envReplay.loadFile(homePath+"data/all-environmental-sort.csv");
-		envReplay.loadSchema(homePath+"schema/environmental.map");
+		envReplay.loadSchema(homePath+"schema/environment.map");
 		(new Thread(envReplay)).start();
 		
 		LoadDataAndReplay meterReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
@@ -104,14 +104,14 @@ public class App {
 //				"   FROM\n" + 
 //				"        environmental.win:time(1 hour),"
 //				+ "sql:hist [' select URI from replay ']";
-		String stmtStr = "SELECT\n" + 
-		"       environmental.insideTemp AS currentTemp, \n" +
-		"		environmental.insideHumidity AS currentHumidity, \n" + 
-		"		environmental.windSpeed AS currentWindSpeed, \n" + 
-		"		environmental.windGust AS currentWindGust, \n" + 
-		"		environmental.windGustDirectionDegrees AS currentWindDirection \n" + 
-		"   FROM\n" + 
-		"        environmental.std:lastevent()";
+		String stmtStr = "    SELECT\n" + 
+				"        environment.insideTemp AS currentTemp ,\n" + 
+				"        environment.insideHumidity AS currentHumidity ,\n" + 
+				"        environment.windSpeed AS currentWindSpeed ,\n" + 
+				"        environment.windGust AS currentWindGust ,\n" + 
+				"        environment.windGustDirectionDegrees AS currentWindDirection \n" + 
+				"    FROM\n" + 
+				"        environment.std:lastevent()    ";
 //		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
 //		statement.addListener(new QueryListener("tempQuery"));
 		

@@ -1,0 +1,18 @@
+PREFIX  ssn:  <http://purl.oclc.org/NET/ssnx/ssn#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  iot:  <http://purl.oclc.org/NET/iot#>
+PREFIX iotsn: <http://iot.soton.ac.uk/smarthome/sensor#>
+
+SELECT ?val ?val2
+FROM NAMED STREAM <http://iot.soton.ac.uk/smarthome/environmental> [LAST]
+WHERE {
+	?obs ssn:observedBy iotsn:environmental1;
+		ssn:observationResult ?snout;
+		ssn:observationResult ?snout2.
+	?snout ssn:hasValue ?obsval.
+	?snout2 ssn:hasValue ?obsval2.
+	?obsval a iot:InternalTemperatureValue;
+		iot:hasQuantityValue ?currentTemp.
+	?obsval2 a iot:ExternalTemperatureValue;
+		iot:hasQuantityValue ?val2.
+}

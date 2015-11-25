@@ -135,6 +135,22 @@
 			if(settingName == "label")
 			{
 				labelObj = newValue;
+				//fix uris
+				if(newValue.constructor == Array) {
+					for(var i=0;i<labelObj.length;i++) {
+						if(labelObj[i].indexOf("#") > -1) {
+							var splitStr = labelObj[i].split("#");
+							labelObj[i] = splitStr[splitStr.length-1];
+						}
+					}
+				} else {
+					if(labelObj.indexOf("#") > -1) {
+						var splitStr = labelObj.split("#");
+						labelObj = splitStr[splitStr.length-1];
+					}
+				}
+				
+				
 			} else if(settingName == "value") {
 				
 				var chartData = [{time:Math.floor(Date.now() / 1000),histogram:{}}];

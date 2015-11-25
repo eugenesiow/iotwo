@@ -1,0 +1,14 @@
+PREFIX  ssn:  <http://purl.oclc.org/NET/ssnx/ssn#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  iot:  <http://purl.oclc.org/NET/iot#>
+
+SELECT (?sensor as ?roomName) (sum(?motionOrNoMotion) as ?totalMotion)
+FROM NAMED STREAM <http://iot.soton.ac.uk/smarthome/motion> [RANGE 10s TUMBLING]
+WHERE {
+    ?obsval a iot:MotionValue;
+      iot:hasQuantityValue ?motionOrNoMotion.
+    ?snout ssn:hasValue ?obsval.
+    ?obs ssn:observationResult ?snout.
+    ?obs ssn:observedBy ?sensor.
+} GROUP BY ?sensor
+HAVING ( sum(?motionOrNoMotion) > 0 )

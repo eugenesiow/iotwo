@@ -139,23 +139,26 @@ public class App {
 		statement.addListener(new QueryListener("tempQuery"));
 		
 		stmtStr = "    SELECT\n" + 
-		"        avg(meter.RealPowerWatts) as averagePower, meter.MeterName as meterName \n" + 
-		"   FROM\n" + 
-		"        meter.win:time(30 sec)" +
-		"	GROUP BY\n" + 
-		"		meter.MeterName" +
-		"	HAVING avg(meter.RealPowerWatts) > 0";
+				"        ('http://iot.soton.ac.uk/smarthome/sensor#'||meter.MeterName) AS meterName ,\n" + 
+				"        avg(meter.RealPowerWatts) AS averagePower \n" + 
+				"    FROM\n" + 
+				"        meter.win:time(30 sec)  \n" + 
+				"    GROUP BY\n" + 
+				"        ('http://iot.soton.ac.uk/smarthome/sensor#'||meter.MeterName) \n" + 
+				"    HAVING\n" + 
+				"        avg(meter.RealPowerWatts)>0 ";
 		EPStatement hstatement = epService.getEPAdministrator().createEPL(stmtStr);
 		hstatement.addListener(new QueryListener("meterQuery"));
 		
-		stmtStr = "SELECT\n" + 
-				"	motion.MotionSensorName as roomName,\n" + 
-				"	sum(motion.MotionOrNoMotion) as totalMotion\n" + 
-				"FROM\n" + 
-				"	motion.win:time_batch(10 sec)\n" + 
-				"GROUP BY\n" + 
-				"	motion.MotionSensorName\n" + 
-				"HAVING sum(motion.MotionOrNoMotion) > 0";
+		stmtStr = "    SELECT\n" + 
+				"        ('http://iot.soton.ac.uk/smarthome/sensor#'||motion.MotionSensorName) AS roomName ,\n" + 
+				"        sum(motion.MotionOrNoMotion) AS totalMotion \n" + 
+				"    FROM\n" + 
+				"        motion.win:time_batch(10 sec)  \n" + 
+				"    GROUP BY\n" + 
+				"        ('http://iot.soton.ac.uk/smarthome/sensor#'||motion.MotionSensorName) \n" + 
+				"    HAVING\n" + 
+				"        sum(motion.MotionOrNoMotion)>0 ";
 		EPStatement mstatement = epService.getEPAdministrator().createEPL(stmtStr);
 		mstatement.addListener(new QueryListener("motionQuery"));
 		

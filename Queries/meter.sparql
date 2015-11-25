@@ -1,0 +1,14 @@
+PREFIX  ssn:  <http://purl.oclc.org/NET/ssnx/ssn#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  iot:  <http://purl.oclc.org/NET/iot#>
+
+SELECT (?meter as ?meterName) (avg(?meterval) as ?averagePower)
+FROM NAMED STREAM <http://iot.soton.ac.uk/smarthome/meter> [RANGE 30s STEP]
+WHERE {
+	?meterobs ssn:observationResult ?metersnout.
+    ?metersnout ssn:hasValue ?meterobsval.
+    ?meterobsval a iot:EnergyValue; 
+    	iot:hasQuantityValue ?meterval.
+    ?meterobs ssn:observedBy ?meter.
+} GROUP BY ?meter
+HAVING ( avg(?meterval) > 0 )

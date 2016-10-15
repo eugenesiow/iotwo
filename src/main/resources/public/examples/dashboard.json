@@ -113,7 +113,7 @@
 			"name": "Events",
 			"type": "iot_ws_stream",
 			"settings": {
-				"url": "ws://localhost:9090/events"
+				"url": "ws://192.168.0.102:9090/events"
 			}
 		}
 	],

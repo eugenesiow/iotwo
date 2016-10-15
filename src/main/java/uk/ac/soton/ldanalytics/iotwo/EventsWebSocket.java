@@ -25,6 +25,7 @@ public class EventsWebSocket {
     
     public static void sendMessage(String message) throws IOException {
         System.out.println("Got: " + message);   // Print message
-        session.getRemote().sendString(message); // and send it back
+        if(session!=null)
+        	session.getRemote().sendString(message); // and send it back
     }
 }

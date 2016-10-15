@@ -2439,3 +2439,421 @@ java.lang.NullPointerException
 2016-10-15 14:43:17 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@ce37d78{/,null,AVAILABLE}
 2016-10-15 14:43:17 INFO  ServerConnector:270 - Started ServerConnector@3f8903{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
 2016-10-15 14:43:17 INFO  Server:397 - Started @1840ms
+2016-10-15 14:47:24 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 14:47:25 INFO  log:186 - Logging initialized @1545ms
+2016-10-15 14:47:25 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 14:47:25 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 14:47:25 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 14:47:25 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@174fd565{/,null,AVAILABLE}
+2016-10-15 14:47:25 INFO  ServerConnector:270 - Started ServerConnector@486a5c77{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 14:47:25 INFO  Server:397 - Started @1727ms
+2016-10-15 14:52:57 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 14:52:58 INFO  log:186 - Logging initialized @1568ms
+2016-10-15 14:52:58 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 14:52:58 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 14:52:58 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 14:52:58 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@6375ca2b{/,null,AVAILABLE}
+2016-10-15 14:52:58 INFO  ServerConnector:270 - Started ServerConnector@6a3fa59e{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 14:52:58 INFO  Server:397 - Started @1757ms
+2016-10-15 15:00:49 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:00:51 INFO  log:186 - Logging initialized @1932ms
+2016-10-15 15:00:51 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:00:51 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:00:51 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:00:51 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@1361e103{/,null,AVAILABLE}
+2016-10-15 15:00:51 INFO  ServerConnector:270 - Started ServerConnector@4a2fd175{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:00:51 INFO  Server:397 - Started @2128ms
+2016-10-15 15:04:15 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:04:16 INFO  log:186 - Logging initialized @1564ms
+2016-10-15 15:04:16 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:04:16 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:04:16 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:04:16 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@317b434d{/,null,AVAILABLE}
+2016-10-15 15:04:16 INFO  ServerConnector:270 - Started ServerConnector@5b4c0326{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:04:16 INFO  Server:397 - Started @1782ms
+2016-10-15 15:09:02 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:09:03 INFO  log:186 - Logging initialized @1486ms
+2016-10-15 15:09:03 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:09:03 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:09:03 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:09:03 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@174fd565{/,null,AVAILABLE}
+2016-10-15 15:09:03 INFO  ServerConnector:270 - Started ServerConnector@486a5c77{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:09:03 INFO  Server:397 - Started @1684ms
+2016-10-15 15:11:30 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:11:31 INFO  log:186 - Logging initialized @1536ms
+2016-10-15 15:11:31 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:11:31 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:11:31 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:11:31 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@164e9516{/,null,AVAILABLE}
+2016-10-15 15:11:31 INFO  ServerConnector:270 - Started ServerConnector@696e87c5{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:11:31 INFO  Server:397 - Started @1725ms
+2016-10-15 15:14:15 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:14:16 INFO  log:186 - Logging initialized @1546ms
+2016-10-15 15:14:16 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:14:16 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:14:16 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:14:16 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@ae28918{/,null,AVAILABLE}
+2016-10-15 15:14:16 INFO  ServerConnector:270 - Started ServerConnector@46496f1f{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:14:16 INFO  Server:397 - Started @1751ms
+2016-10-15 15:29:32 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:29:33 INFO  log:186 - Logging initialized @1522ms
+2016-10-15 15:29:33 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:29:33 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:29:33 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:29:33 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@66c5c5a4{/,null,AVAILABLE}
+2016-10-15 15:29:33 INFO  ServerConnector:270 - Started ServerConnector@2133cfd3{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:29:33 INFO  Server:397 - Started @1708ms
+2016-10-15 15:30:09 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:30:30 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:30:31 INFO  log:186 - Logging initialized @1668ms
+2016-10-15 15:30:31 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:30:31 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:30:31 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:30:31 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@337c7f20{/,null,AVAILABLE}
+2016-10-15 15:30:32 INFO  ServerConnector:270 - Started ServerConnector@62603048{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:30:32 INFO  Server:397 - Started @1875ms
+2016-10-15 15:32:49 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:32:50 INFO  log:186 - Logging initialized @1547ms
+2016-10-15 15:32:50 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:32:50 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:32:50 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:32:50 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@60394cb8{/,null,AVAILABLE}
+2016-10-15 15:32:50 INFO  ServerConnector:270 - Started ServerConnector@436ca8d5{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:32:50 INFO  Server:397 - Started @1726ms
+2016-10-15 15:37:55 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:37:56 INFO  log:186 - Logging initialized @1012ms
+2016-10-15 15:37:56 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:37:56 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:37:56 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:37:56 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@332a3720{/,null,AVAILABLE}
+2016-10-15 15:37:56 INFO  ServerConnector:270 - Started ServerConnector@6926a17e{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:37:56 INFO  Server:397 - Started @1221ms
+2016-10-15 15:39:16 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:39:18 INFO  log:186 - Logging initialized @1936ms
+2016-10-15 15:39:18 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:39:18 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:39:18 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:39:18 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@51a86948{/,null,AVAILABLE}
+2016-10-15 15:39:18 INFO  ServerConnector:270 - Started ServerConnector@4528ce08{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:39:18 INFO  Server:397 - Started @2158ms
+2016-10-15 15:41:19 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:41:20 INFO  log:186 - Logging initialized @1914ms
+2016-10-15 15:41:20 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:41:20 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:41:20 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:41:20 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@69544796{/,null,AVAILABLE}
+2016-10-15 15:41:20 INFO  ServerConnector:270 - Started ServerConnector@6395c991{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:41:20 INFO  Server:397 - Started @2173ms
+2016-10-15 15:43:00 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:43:01 INFO  log:186 - Logging initialized @1924ms
+2016-10-15 15:43:01 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:43:01 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:43:01 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:43:01 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@51a86948{/,null,AVAILABLE}
+2016-10-15 15:43:01 INFO  ServerConnector:270 - Started ServerConnector@4528ce08{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:43:01 INFO  Server:397 - Started @2168ms
+2016-10-15 15:48:03 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:48:04 INFO  log:186 - Logging initialized @1964ms
+2016-10-15 15:48:05 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:48:05 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:48:05 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:48:05 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@25970ee3{/,null,AVAILABLE}
+2016-10-15 15:48:05 INFO  ServerConnector:270 - Started ServerConnector@673241ee{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:48:05 INFO  Server:397 - Started @2225ms
+2016-10-15 15:55:30 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:55:32 INFO  log:186 - Logging initialized @2001ms
+2016-10-15 15:55:32 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:55:32 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:55:32 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:55:32 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@4e02706{/,null,AVAILABLE}
+2016-10-15 15:55:32 INFO  ServerConnector:270 - Started ServerConnector@211a6b42{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:55:32 INFO  Server:397 - Started @2240ms
+2016-10-15 15:56:37 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:56:39 INFO  log:186 - Logging initialized @1922ms
+2016-10-15 15:56:39 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:56:39 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:56:39 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:56:39 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@f8e67e7{/,null,AVAILABLE}
+2016-10-15 15:56:39 INFO  ServerConnector:270 - Started ServerConnector@1cf5290d{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:56:39 INFO  Server:397 - Started @2155ms
+2016-10-15 15:58:19 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:58:20 INFO  log:186 - Logging initialized @1908ms
+2016-10-15 15:58:21 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:58:21 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:58:21 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:58:21 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@52b2c850{/,null,AVAILABLE}
+2016-10-15 15:58:21 INFO  ServerConnector:270 - Started ServerConnector@72bd319d{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:58:21 INFO  Server:397 - Started @2152ms
+2016-10-15 15:59:01 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 15:59:03 INFO  log:186 - Logging initialized @2476ms
+2016-10-15 15:59:03 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 15:59:03 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 15:59:03 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 15:59:03 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@52b2c850{/,null,AVAILABLE}
+2016-10-15 15:59:03 INFO  ServerConnector:270 - Started ServerConnector@72bd319d{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 15:59:03 INFO  Server:397 - Started @2704ms
+2016-10-15 16:00:29 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:00:31 INFO  log:186 - Logging initialized @1928ms
+2016-10-15 16:00:31 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:00:31 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:00:31 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:00:31 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@3cbb13bd{/,null,AVAILABLE}
+2016-10-15 16:00:31 INFO  ServerConnector:270 - Started ServerConnector@556c0206{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:00:31 INFO  Server:397 - Started @2192ms
+2016-10-15 16:01:35 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:01:37 INFO  log:186 - Logging initialized @2088ms
+2016-10-15 16:01:37 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:01:37 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:01:37 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:01:37 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@7b3c89f1{/,null,AVAILABLE}
+2016-10-15 16:01:37 INFO  ServerConnector:270 - Started ServerConnector@143d5ed6{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:01:37 INFO  Server:397 - Started @2300ms
+2016-10-15 16:03:42 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:03:42 INFO  log:186 - Logging initialized @1293ms
+2016-10-15 16:03:43 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:03:43 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:03:43 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:03:43 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@3767a6fa{/,null,AVAILABLE}
+2016-10-15 16:03:43 INFO  ServerConnector:270 - Started ServerConnector@73b2750d{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:03:43 INFO  Server:397 - Started @1533ms
+2016-10-15 16:04:20 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:04:21 INFO  log:186 - Logging initialized @1020ms
+2016-10-15 16:04:21 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:04:21 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:04:21 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:04:21 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@51a86948{/,null,AVAILABLE}
+2016-10-15 16:04:21 INFO  ServerConnector:270 - Started ServerConnector@1c413618{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:04:21 INFO  Server:397 - Started @1236ms
+2016-10-15 16:05:33 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:05:33 INFO  log:186 - Logging initialized @1171ms
+2016-10-15 16:05:33 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:05:33 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:05:33 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:05:33 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@3cbb13bd{/,null,AVAILABLE}
+2016-10-15 16:05:33 INFO  ServerConnector:270 - Started ServerConnector@556c0206{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:05:33 INFO  Server:397 - Started @1345ms
+2016-10-15 16:06:54 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:06:54 INFO  log:186 - Logging initialized @926ms
+2016-10-15 16:06:55 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:06:55 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:06:55 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:06:55 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@1204b40a{/,null,AVAILABLE}
+2016-10-15 16:06:55 INFO  ServerConnector:270 - Started ServerConnector@76726c61{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:06:55 INFO  Server:397 - Started @1150ms
+2016-10-15 16:08:16 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:08:16 INFO  log:186 - Logging initialized @1025ms
+2016-10-15 16:08:16 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:08:16 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:08:16 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:08:16 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@3b83751c{/,null,AVAILABLE}
+2016-10-15 16:08:16 INFO  ServerConnector:270 - Started ServerConnector@4e1fb6cc{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:08:16 INFO  Server:397 - Started @1257ms
+2016-10-15 16:11:54 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:11:54 INFO  log:186 - Logging initialized @1007ms
+2016-10-15 16:11:54 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:11:54 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:11:54 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:11:54 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@5231cc9f{/,null,AVAILABLE}
+2016-10-15 16:11:54 INFO  ServerConnector:270 - Started ServerConnector@51b19308{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:11:54 INFO  Server:397 - Started @1159ms
+2016-10-15 16:12:25 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:12:25 INFO  log:186 - Logging initialized @1004ms
+2016-10-15 16:12:25 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:12:25 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:12:25 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:12:25 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@687ce742{/,null,AVAILABLE}
+2016-10-15 16:12:25 INFO  ServerConnector:270 - Started ServerConnector@3a4d5b5f{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:12:25 INFO  Server:397 - Started @1178ms
+2016-10-15 16:13:17 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:13:18 INFO  log:186 - Logging initialized @1980ms
+2016-10-15 16:13:18 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:13:18 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:13:18 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:13:18 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@57226c4e{/,null,AVAILABLE}
+2016-10-15 16:13:18 INFO  ServerConnector:270 - Started ServerConnector@25427f46{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:13:18 INFO  Server:397 - Started @2128ms
+2016-10-15 16:14:40 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:14:42 INFO  log:186 - Logging initialized @2577ms
+2016-10-15 16:14:43 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:14:43 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:14:43 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:14:43 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@149552b8{/,null,AVAILABLE}
+2016-10-15 16:14:43 INFO  ServerConnector:270 - Started ServerConnector@5b049714{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:14:43 INFO  Server:397 - Started @2819ms
+2016-10-15 16:19:05 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:19:06 INFO  log:186 - Logging initialized @1319ms
+2016-10-15 16:19:06 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:19:06 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:19:06 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:19:06 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@721b2c12{/,null,AVAILABLE}
+2016-10-15 16:19:06 INFO  ServerConnector:270 - Started ServerConnector@70749c9c{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:19:06 INFO  Server:397 - Started @1463ms
+2016-10-15 16:21:06 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:21:07 INFO  log:186 - Logging initialized @982ms
+2016-10-15 16:21:07 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:21:07 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:21:07 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:21:07 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@3fce4abc{/,null,AVAILABLE}
+2016-10-15 16:21:07 INFO  ServerConnector:270 - Started ServerConnector@35d05878{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:21:07 INFO  Server:397 - Started @1133ms
+2016-10-15 16:22:26 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:22:26 INFO  log:186 - Logging initialized @1024ms
+2016-10-15 16:22:26 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:22:26 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:22:26 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:22:26 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@4f544717{/,null,AVAILABLE}
+2016-10-15 16:22:26 INFO  ServerConnector:270 - Started ServerConnector@3f14a9d0{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:22:26 INFO  Server:397 - Started @1167ms
+2016-10-15 16:24:56 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:24:56 INFO  log:186 - Logging initialized @1193ms
+2016-10-15 16:24:56 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:24:56 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:24:56 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:24:56 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@45c4cb3a{/,null,AVAILABLE}
+2016-10-15 16:24:56 INFO  ServerConnector:270 - Started ServerConnector@11a451fb{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:24:56 INFO  Server:397 - Started @1351ms
+2016-10-15 16:34:33 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:34:44 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:35:39 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:35:40 INFO  log:186 - Logging initialized @1474ms
+2016-10-15 16:35:40 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:35:40 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:35:40 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:35:40 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@7339841d{/,null,AVAILABLE}
+2016-10-15 16:35:40 INFO  ServerConnector:270 - Started ServerConnector@4ab5a3de{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:35:40 INFO  Server:397 - Started @1623ms
+2016-10-15 16:36:53 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:36:54 INFO  log:186 - Logging initialized @956ms
+2016-10-15 16:36:54 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:36:54 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:36:54 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:36:54 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@2f5a7806{/,null,AVAILABLE}
+2016-10-15 16:36:54 INFO  ServerConnector:270 - Started ServerConnector@5759d4e6{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:36:54 INFO  Server:397 - Started @1108ms
+2016-10-15 16:37:47 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:37:47 INFO  log:186 - Logging initialized @960ms
+2016-10-15 16:37:47 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:37:47 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:37:47 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:37:47 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@44e53a6c{/,null,AVAILABLE}
+2016-10-15 16:37:47 INFO  ServerConnector:270 - Started ServerConnector@63959336{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:37:47 INFO  Server:397 - Started @1100ms
+2016-10-15 16:41:34 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:41:35 INFO  log:186 - Logging initialized @1464ms
+2016-10-15 16:41:35 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:41:35 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:41:35 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:41:35 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@1fd64c70{/,null,AVAILABLE}
+2016-10-15 16:41:35 INFO  ServerConnector:270 - Started ServerConnector@4573134b{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:41:35 INFO  Server:397 - Started @1736ms
+2016-10-15 16:42:11 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:42:11 INFO  log:186 - Logging initialized @1005ms
+2016-10-15 16:42:11 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:42:11 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:42:11 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:42:11 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@35b52d8b{/,null,AVAILABLE}
+2016-10-15 16:42:11 INFO  ServerConnector:270 - Started ServerConnector@1820b36d{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:42:11 INFO  Server:397 - Started @1236ms
+2016-10-15 16:42:13 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:42:13 INFO  log:186 - Logging initialized @957ms
+2016-10-15 16:42:13 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:42:13 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:42:13 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:42:13 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@2e482539{/,null,AVAILABLE}
+2016-10-15 16:42:13 ERROR JettySparkServer:135 - ignite failed
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:437)
+	at sun.nio.ch.Net.bind(Net.java:429)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:326)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:244)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:384)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at spark.webserver.JettySparkServer.ignite(JettySparkServer.java:131)
+	at spark.SparkInstance.lambda$init$0(SparkInstance.java:341)
+	at spark.SparkInstance$$Lambda$2/283383329.run(Unknown Source)
+	at java.lang.Thread.run(Thread.java:745)
+2016-10-15 16:42:40 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:42:41 INFO  log:186 - Logging initialized @1421ms
+2016-10-15 16:42:41 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:42:41 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:42:41 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:42:41 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@70684c6d{/,null,AVAILABLE}
+2016-10-15 16:42:41 INFO  ServerConnector:270 - Started ServerConnector@8fec7a8{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:42:41 INFO  Server:397 - Started @1618ms
+2016-10-15 16:50:41 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:50:41 INFO  log:186 - Logging initialized @1133ms
+2016-10-15 16:50:41 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:50:41 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:50:41 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:50:41 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@1fa56d76{/,null,AVAILABLE}
+2016-10-15 16:50:42 INFO  ServerConnector:270 - Started ServerConnector@7c52eee2{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:50:42 INFO  Server:397 - Started @1308ms
+2016-10-15 16:51:12 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:51:12 INFO  log:186 - Logging initialized @1086ms
+2016-10-15 16:51:12 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:51:12 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:51:12 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:51:12 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@400abecb{/,null,AVAILABLE}
+2016-10-15 16:51:12 INFO  ServerConnector:270 - Started ServerConnector@72eb9097{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:51:12 INFO  Server:397 - Started @1333ms
+2016-10-15 16:56:54 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:56:54 INFO  log:186 - Logging initialized @1057ms
+2016-10-15 16:56:54 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:56:54 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:56:54 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:56:54 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@7a3c20db{/,null,AVAILABLE}
+2016-10-15 16:56:54 INFO  ServerConnector:270 - Started ServerConnector@3d79e46d{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:56:54 INFO  Server:397 - Started @1244ms
+2016-10-15 16:57:32 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:57:33 INFO  log:186 - Logging initialized @966ms
+2016-10-15 16:57:33 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:57:33 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:57:33 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:57:33 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@505843d7{/,null,AVAILABLE}
+2016-10-15 16:57:33 INFO  ServerConnector:270 - Started ServerConnector@5f100d9a{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:57:33 INFO  Server:397 - Started @1135ms
+2016-10-15 16:59:26 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 16:59:26 INFO  log:186 - Logging initialized @1004ms
+2016-10-15 16:59:26 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 16:59:26 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 16:59:26 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 16:59:26 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@505843d7{/,null,AVAILABLE}
+2016-10-15 16:59:26 INFO  ServerConnector:270 - Started ServerConnector@7d0fd98f{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 16:59:26 INFO  Server:397 - Started @1147ms
+2016-10-15 17:00:40 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 17:00:41 INFO  log:186 - Logging initialized @1549ms
+2016-10-15 17:00:41 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 17:00:41 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 17:00:41 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 17:00:41 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@31f70575{/,null,AVAILABLE}
+2016-10-15 17:00:41 INFO  ServerConnector:270 - Started ServerConnector@fece92c{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 17:00:41 INFO  Server:397 - Started @1711ms
+2016-10-15 17:02:09 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 17:02:10 INFO  log:186 - Logging initialized @1257ms
+2016-10-15 17:02:10 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 17:02:10 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 17:02:10 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 17:02:10 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@2f8e9294{/,null,AVAILABLE}
+2016-10-15 17:02:10 INFO  ServerConnector:270 - Started ServerConnector@7f16efd5{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 17:02:10 INFO  Server:397 - Started @1661ms
+2016-10-15 17:02:58 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 17:02:58 INFO  log:186 - Logging initialized @1386ms
+2016-10-15 17:02:58 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 17:02:58 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 17:02:58 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 17:02:59 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@15ac7cd9{/,null,AVAILABLE}
+2016-10-15 17:02:59 INFO  ServerConnector:270 - Started ServerConnector@1035412c{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 17:02:59 INFO  Server:397 - Started @1727ms
+2016-10-15 17:06:06 INFO  EPServiceProviderImpl:415 - Initializing engine URI 'default' version 5.3.0
+2016-10-15 17:06:07 INFO  log:186 - Logging initialized @1439ms
+2016-10-15 17:06:07 INFO  JettySparkServer:128 - == Spark has ignited ...
+2016-10-15 17:06:07 INFO  JettySparkServer:129 - >> Listening on 0.0.0.0:9090
+2016-10-15 17:06:07 INFO  Server:345 - jetty-9.3.2.v20150730
+2016-10-15 17:06:07 INFO  ContextHandler:738 - Started o.e.j.s.ServletContextHandler@337f6cc8{/,null,AVAILABLE}
+2016-10-15 17:06:07 INFO  ServerConnector:270 - Started ServerConnector@4fceacd9{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-15 17:06:07 INFO  Server:397 - Started @1633ms

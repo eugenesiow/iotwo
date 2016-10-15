@@ -6,13 +6,12 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.io.FilenameUtils;
+import org.json.JSONObject;
 import org.sql2o.Sql2o;
 import org.zeromq.ZMQ;
 
@@ -48,6 +47,12 @@ public class LoadDataAndReplay implements Runnable {
 	
 	public void run() {
 		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
 			String line="";
 			long previousTime = startTime;
@@ -65,8 +70,11 @@ public class LoadDataAndReplay implements Runnable {
 			            }
 //			            epService.getEPRuntime().sendEvent(data, name);
 			            Gson gson = new Gson();
-			            sender.sendMore(name);
-			            sender.send(gson.toJson(data));
+			            JSONObject mainObj = new JSONObject();
+			            mainObj.put("name",name);
+			            mainObj.put("data",gson.toJson(data));
+//			            sender.sendMore(name);
+			            sender.send(mainObj.toString());
 					} else if(loadDB) {
 						
 					}

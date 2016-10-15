@@ -4,6 +4,7 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.webSocket;
 import static spark.Spark.port;
+import static spark.Spark.init;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -66,7 +67,7 @@ public class App {
 		Sql2o sql2o = new Sql2o(prop.getProperty("jdbcUrl"), prop.getProperty("dbUser"), prop.getProperty("dbPass"));
 		Model model = new Model(sql2o);
 		Gson gson = new Gson(); 
-		
+//		
 		ConfigurationDBRef dbConfig = new ConfigurationDBRef();
 		dbConfig.setDriverManagerConnection("org.h2.Driver",
 											prop.getProperty("jdbcUrl"), 
@@ -75,15 +76,20 @@ public class App {
 
 		Configuration engineConfig = new Configuration();
 		engineConfig.addDatabaseReference("hist", dbConfig);
-		
+//		
 		String homePath = prop.getProperty("homePath");
 		
 		EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider(engineConfig);
 		
-		//  Prepare our context and publisher
+		 //  Prepare our context and publisher
         ZMQ.Context context = ZMQ.context(1);
 		ZMQ.Socket sender = context.socket(ZMQ.PUSH);
-		sender.connect("tcp://localhost:5700");		
+		sender.connect("tcp://localhost:5700");
+		
+		ZMQ.Socket receiver = context.socket(ZMQ.PULL);
+		receiver.connect("tcp://localhost:6000");
+		ResultsReceiver resultsReceiver = new ResultsReceiver(receiver);
+		(new Thread(resultsReceiver)).start();
 		
 		LoadDataAndReplay envReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService, sender);
 		envReplay.setLoadDB(true);
@@ -113,14 +119,14 @@ public class App {
 //				"   FROM\n" + 
 //				"        environmental.win:time(1 hour),"
 //				+ "sql:hist [' select URI from replay ']";
-		String stmtStr = "SELECT\n" + 
-		"       environmental.insideTemp AS currentTemp, \n" +
-		"		environmental.insideHumidity AS currentHumidity, \n" + 
-		"		environmental.windSpeed AS currentWindSpeed, \n" + 
-		"		environmental.windGust AS currentWindGust, \n" + 
-		"		environmental.windGustDirectionDegrees AS currentWindDirection \n" + 
-		"   FROM\n" + 
-		"        environmental.std:lastevent()";
+//		String stmtStr = "SELECT\n" + 
+//		"       environmental.insideTemp AS currentTemp, \n" +
+//		"		environmental.insideHumidity AS currentHumidity, \n" + 
+//		"		environmental.windSpeed AS currentWindSpeed, \n" + 
+//		"		environmental.windGust AS currentWindGust, \n" + 
+//		"		environmental.windGustDirectionDegrees AS currentWindDirection \n" + 
+//		"   FROM\n" + 
+//		"        environmental.std:lastevent()";
 //		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
 //		statement.addListener(new QueryListener("tempQuery"));
 		
@@ -144,31 +150,32 @@ public class App {
 //				"	sum(motion.MotionOrNoMotion)=0 AND\n" + 
 //				"	sum(meter.RealPowerWatts)>0";
 		
-		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
-		statement.addListener(new QueryListener("tempQuery"));
+//		EPStatement statement = epService.getEPAdministrator().createEPL(stmtStr);
+//		statement.addListener(new QueryListener("tempQuery"));
 		
-		stmtStr = "    SELECT\n" + 
-		"        avg(meter.RealPowerWatts) as averagePower, meter.MeterName as meterName \n" + 
-		"   FROM\n" + 
-		"        meter.win:time(30 sec)" +
-		"	GROUP BY\n" + 
-		"		meter.MeterName" +
-		"	HAVING avg(meter.RealPowerWatts) > 0";
-		EPStatement hstatement = epService.getEPAdministrator().createEPL(stmtStr);
-		hstatement.addListener(new QueryListener("meterQuery"));
+//		stmtStr = "    SELECT\n" + 
+//		"        avg(meter.RealPowerWatts) as averagePower, meter.MeterName as meterName \n" + 
+//		"   FROM\n" + 
+//		"        meter.win:time(30 sec)" +
+//		"	GROUP BY\n" + 
+//		"		meter.MeterName" +
+//		"	HAVING avg(meter.RealPowerWatts) > 0";
+//		EPStatement hstatement = epService.getEPAdministrator().createEPL(stmtStr);
+//		hstatement.addListener(new QueryListener("meterQuery"));
 		
-		stmtStr = "SELECT\n" + 
-				"	motion.MotionSensorName as roomName,\n" + 
-				"	sum(motion.MotionOrNoMotion) as totalMotion\n" + 
-				"FROM\n" + 
-				"	motion.win:time_batch(10 sec)\n" + 
-				"GROUP BY\n" + 
-				"	motion.MotionSensorName\n" + 
-				"HAVING sum(motion.MotionOrNoMotion) > 0";
-		EPStatement mstatement = epService.getEPAdministrator().createEPL(stmtStr);
-		mstatement.addListener(new QueryListener("motionQuery"));
+//		stmtStr = "SELECT\n" + 
+//				"	motion.MotionSensorName as roomName,\n" + 
+//				"	sum(motion.MotionOrNoMotion) as totalMotion\n" + 
+//				"FROM\n" + 
+//				"	motion.win:time_batch(10 sec)\n" + 
+//				"GROUP BY\n" + 
+//				"	motion.MotionSensorName\n" + 
+//				"HAVING sum(motion.MotionOrNoMotion) > 0";
+//		EPStatement mstatement = epService.getEPAdministrator().createEPL(stmtStr);
+//		mstatement.addListener(new QueryListener("motionQuery"));
 		
 		webSocket("/events", EventsWebSocket.class);
+		init();
 		
         get("/", (req, res) -> {        	
         	Map<String, Object> attributes = new HashMap<>();
@@ -202,5 +209,6 @@ public class App {
         post("api/queries/register", "application/json", (req, res) -> {    
         	return req.body();
         });
+        
     }
 }

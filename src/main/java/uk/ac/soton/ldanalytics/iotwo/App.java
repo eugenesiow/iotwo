@@ -16,6 +16,7 @@ import javax.servlet.MultipartConfigElement;
 
 import org.eclipse.jetty.server.Request;
 import org.sql2o.Sql2o;
+import org.zeromq.ZMQ;
 
 import spark.ModelAndView;
 import spark.Spark;
@@ -79,21 +80,26 @@ public class App {
 		
 		EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider(engineConfig);
 		
-		LoadDataAndReplay envReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
+		//  Prepare our context and publisher
+        ZMQ.Context context = ZMQ.context(1);
+		ZMQ.Socket sender = context.socket(ZMQ.PUSH);
+		sender.connect("tcp://localhost:5700");		
+		
+		LoadDataAndReplay envReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService, sender);
 		envReplay.setLoadDB(true);
 		envReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
 		envReplay.loadFile(homePath+"data/all-environmental-sort.csv");
 		envReplay.loadSchema(homePath+"schema/environmental.map");
 		(new Thread(envReplay)).start();
 		
-		LoadDataAndReplay meterReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
+		LoadDataAndReplay meterReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService, sender);
 		meterReplay.setLoadDB(true);
 		meterReplay.setSpeed(Integer.parseInt(prop.getProperty("speed"))/2);
 		meterReplay.loadFile(homePath+"data/all-meter-replace.csv");
 		meterReplay.loadSchema(homePath+"schema/meter.map");
 		(new Thread(meterReplay)).start();
 		
-		LoadDataAndReplay motionReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService);
+		LoadDataAndReplay motionReplay = new LoadDataAndReplay(Long.parseLong(prop.getProperty("timestampNow")), sql2o, epService, sender);
 		motionReplay.setLoadDB(true);
 		motionReplay.setSpeed(Integer.parseInt(prop.getProperty("speed")));
 		motionReplay.loadFile(homePath+"data/all-motion-replace.csv");

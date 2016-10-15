@@ -14,8 +14,10 @@ import java.util.Map.Entry;
 
 import org.apache.commons.io.FilenameUtils;
 import org.sql2o.Sql2o;
+import org.zeromq.ZMQ;
 
 import com.espertech.esper.client.EPServiceProvider;
+import com.google.gson.Gson;
 
 public class LoadDataAndReplay implements Runnable {
 	private long startTime;
@@ -27,11 +29,13 @@ public class LoadDataAndReplay implements Runnable {
 	private EPServiceProvider epService;
 	private String name;
 	private int speed=1;
+	private ZMQ.Socket sender;
 	
-	public LoadDataAndReplay(long startTime, Sql2o sql2o, EPServiceProvider epService) {
+	public LoadDataAndReplay(long startTime, Sql2o sql2o, EPServiceProvider epService, ZMQ.Socket sender) {
 		this.startTime = startTime;
 		this.sql2o = sql2o;
 		this.epService = epService;
+		this.sender = sender;
 	}
 	
 	public void setLoadDB(Boolean loadDB) {
@@ -59,7 +63,10 @@ public class LoadDataAndReplay implements Runnable {
 			            for(Entry<String,Object> row:dataSchema.entrySet()) {
 			            	data.put(row.getKey(), convertStrToObject(parts[i++],row.getValue()));
 			            }
-			            epService.getEPRuntime().sendEvent(data, name);
+//			            epService.getEPRuntime().sendEvent(data, name);
+			            Gson gson = new Gson();
+			            sender.sendMore(name);
+			            sender.send(gson.toJson(data));
 					} else if(loadDB) {
 						
 					}

@@ -3,6 +3,7 @@ package uk.ac.soton.ldanalytics.iotwo;
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.webSocket;
+import static spark.Spark.port;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,7 +35,9 @@ import com.google.gson.Gson;
 import freemarker.cache.ClassTemplateLoader;
 
 public class App {
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
+		port(9090);
+		
 		FreeMarkerEngine freeMarkerEngine = new FreeMarkerEngine();
 		freemarker.template.Configuration freeMarkerConfiguration = new freemarker.template.Configuration();
 		freeMarkerConfiguration.setTemplateLoader(new ClassTemplateLoader(App.class, "/templates"));
